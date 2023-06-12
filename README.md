@@ -1,3 +1,5 @@
+# Adam Podlaski
+
 # AbsenceManagementSystem
 Program ułatwiający zarządzanie nieobecnościami pracowników.
 
