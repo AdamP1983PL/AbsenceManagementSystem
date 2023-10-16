@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,12 +35,20 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public EmployeeDto getEmployeeDtoById(Long employeeDtoId) {
-        return null;
+        Optional<Employee> tempEmployee = employeeRepository.findById(employeeDtoId);
+
+        Employee employee;
+        if (tempEmployee.isPresent()){
+            employee = tempEmployee.get();
+        } else {
+            throw new RuntimeException("There is no Employee for id: " + employeeDtoId);
+        }
+        return EmployeeMapper.mapToEmployeeDto(employee);
     }
 
     @Override
     public void updateEmployee(EmployeeDto employeeDto) {
-
+        employeeRepository.save(EmployeeMapper.mapToEmployee(employeeDto));
     }
 
     @Override

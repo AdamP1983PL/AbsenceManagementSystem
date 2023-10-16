@@ -7,10 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,4 +45,43 @@ public class EmployeeController {
         employeeServiceImpl.save(employeeDto);
         return "redirect:/employees";
     }
+
+    @GetMapping("/{employeeDtoId}/edit")
+    public String editEmployee(@PathVariable("employeeDtoId") Long employeeDtoId, Model model){
+        EmployeeDto employeeDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
+        model.addAttribute("employeeDto", employeeDto);
+        return "editEmployee";
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
