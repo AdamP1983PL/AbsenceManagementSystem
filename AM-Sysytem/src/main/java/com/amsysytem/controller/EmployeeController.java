@@ -47,12 +47,31 @@ public class EmployeeController {
     }
 
     @GetMapping("/{employeeDtoId}/edit")
-    public String editEmployee(@PathVariable("employeeDtoId") Long employeeDtoId, Model model){
+    public String editEmployee(@PathVariable("employeeDtoId") Long employeeDtoId, Model model) {
         EmployeeDto employeeDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
         model.addAttribute("employeeDto", employeeDto);
         return "editEmployee";
     }
 
+    @PostMapping("/{employeeDtoId}")
+    public String updateEmployee(@PathVariable("employeeDtoId") Long employeeDtoId,
+                                 @Valid @ModelAttribute("emloyeeDto") EmployeeDto employeeDto,
+                                 BindingResult result,
+                                 Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("employeeDto", employeeDto);
+            return "editEmployee";
+        }
+        employeeDto.setId(employeeDtoId);
+        employeeServiceImpl.updateEmployee(employeeDto);
+        return "redirect:/employees";
+    }
+
+    @GetMapping("/{employeeDtoId}/delete")
+    public String deleteEmployee(@PathVariable("employeeDtoId") Long employeeDtoId) {
+        employeeServiceImpl.deleteEmployee(employeeDtoId);
+        return "redirect:/employees";
+    }
 
 }
 
