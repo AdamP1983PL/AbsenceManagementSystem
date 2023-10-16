@@ -1,7 +1,6 @@
 package com.amsysytem.service;
 
 import com.amsysytem.dto.EmployeeDto;
-
 import java.util.List;
 
 public interface EmployeeService {

@@ -17,10 +17,18 @@ public class EmployeeController {
 
     private final EmployeeServiceImpl employeeServiceImpl;
 
+
     @GetMapping("")
     public String listEmployees(Model model) {
         List<EmployeeDto> employeeDtoList = employeeServiceImpl.getAllEmployees();
         model.addAttribute("employeeDtoList", employeeDtoList);
         return "employees";
+    }
+
+    @GetMapping("/newEmployee")
+    public String addNewEmployee(Model model){
+        EmployeeDto employeeDto = new EmployeeDto();
+        model.addAttribute("employeeDto", employeeDto);
+        return "addNewEmployee";
     }
 }
