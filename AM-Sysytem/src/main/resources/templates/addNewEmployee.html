@@ -41,40 +41,41 @@
 <div class="container row col-md-6 offset-md-3">
     <div class="card">
         <div class="card-header">
-            <h2>Create New Employee</h2>
+            <h2>Create Employee</h2>
         </div>
         <div class="card-body">
-            <form action="#" method="post" role="form" th:action="@{employees/save}" th:object="${employeeDto}">
+            <form action="#" method="post" role="form"
+                  th:action="@{/employees/save}" th:object="${employeeDto}">
 
-                <div class="form group mb-3">
+                <div class="form-group mb-3">
                     <label class="form-label">Last Name</label>
                     <input class="form-control" th:field="*{lastName}"
                            type="text" id="lastName" name="lastName" placeholder="Enter Last Name">
-<!--                    <p th:if="${#field.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}"></p>-->
+                    <p th:if="${#fields.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}" ></p>
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label">First Name</label>
                     <input class="form-control" th:field="*{firstName}"
                            type="text" id="firstName" name="firstname" placeholder="Enter First Name">
-<!--                    <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>-->
+                    <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>
                 </div>
-                <div class="form group mb-3">
+                <div class="form-group mb-3">
                     <label class="form-label">Email</label>
                     <input class="form-control" th:field="*{email}"
-                           type="text" id="email" name="email" placeholder="Enter Email">
-<!--                    <p th:if="${#field.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>-->
+                           type="email" id="email" name="email" placeholder="Enter Email">
+                    <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label">Password</label>
                     <input class="form-control" th:field="*{password}"
                            type="text" id="password" name="password" placeholder="Enter Password">
-<!--                    <p th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></p>-->
+                    <p th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></p>
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label">Phone Number</label>
                     <input class="form-control" th:field="*{phoneNumber}"
                            type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone number">
-<!--                    <p th:if="${#fields.hasErrors('phoneNumber')}" class="text-danger" th:errors="*{phoneNumber}"></p>-->
+                    <p th:if="${#fields.hasErrors('phoneNumber')}" class="text-danger" th:errors="*{phoneNumber}"></p>
                 </div>
                 <div class="form-group mb-3">
                     <p> Select Employee Role:
@@ -92,16 +93,17 @@
                     <label class="form-label">Due Days (0 - 52)</label>
                     <input class="form-control" th:field="*{dueDays}"
                            type="number" id="dueDays" name="dueDays" placeholder="Enter Due Days">
-<!--                    <p th:if="${#fields.hasErrors('dueDays')}" class="text-danger" th:errors="*{dueDays}"></p>-->
+                    <p th:if="${#fields.hasErrors('dueDays')}" class="text-danger" th:errors="*{dueDays}"></p>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-primary" type="submit">Save Employee</button>
                 </div>
+
             </form>
             <div class="mb-3">
                 <a th:href="@{/employees}">Proceed to Employee List</a>
             </div>
-            <div class="mb-3">
+            <div>
                 <a th:href="@{/admin}">Back to Admin Space</a>
             </div>
         </div>
