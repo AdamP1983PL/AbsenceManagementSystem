@@ -28,4 +28,12 @@ public class RequestController {
         model.addAttribute("requestDtoList", requestDtoList);
         return "requests-admin-mode";
     }
+
+    @GetMapping("/addNewRequest")
+    public String addNewRequest(Model model){
+        RequestDto requestDtoToAdd = new RequestDto();
+        model.addAttribute("requestDtoToAdd", requestDtoToAdd);
+        return "request-form";
+    }
+
 }
