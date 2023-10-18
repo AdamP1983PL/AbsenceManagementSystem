@@ -27,7 +27,7 @@ public class RequestServiceImpl implements RequestService{
 
     @Override
     public void save(RequestDto requestDto) {
-
+        requestRepository.save(RequestMapper.mapToRequest(requestDto));
     }
 
     @Override

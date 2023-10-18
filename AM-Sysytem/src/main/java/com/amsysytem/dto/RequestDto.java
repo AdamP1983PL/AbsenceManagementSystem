@@ -34,10 +34,10 @@ public class RequestDto {
 
     private LocalDateTime dateTimeCreated;
 
-    @NotEmpty(message = "Starting date should not be empty")
+//    @NotEmpty(message = "Starting date should not be empty")
     private LocalDate startingDate;
 
-    @NotEmpty(message = "Ending date should not be empty")
+//    @NotEmpty(message = "Ending date should not be empty")
     private LocalDate endingDate;
 
     private int daysCount;
