@@ -25,6 +25,9 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/employees}">Employee List</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/requests}">Requests</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
                 </li>
             </ul>
@@ -38,7 +41,7 @@
         <h1>Requests List - Manager Place</h1>
     </div>
     <br>
-    <table class="table, table-stripped table-hover table-bordered table-primary">
+    <table class="table table-striped table-hover table-bordered table-primary">
         <thead>
         <tr>
             <th>Id</th>
@@ -55,27 +58,30 @@
         </tr>
         </thead>
         <tbody>
-            <tr th:each="request : ${requestDtoList}" th:object="${request}">
-                <td th:text="*{id}"></td>
-                <td th:text="*{lastName}"></td>
-                <td th:text="*{firstName}"></td>
-                <td th:text="*{email}"></td>
-                <td th:text="*{#temporals.format(dateTimeCreated, 'dd-MM-yyyy HH:mm')}"></td>
-                <td th:text="*{startingDate}"></td>
-                <td th:text="*{endingDate}"></td>
-                <td th:text="*{daysCount}"></td>
-                <td th:text="*{dueDays}"></td>
-                <td th:text="*{status}"></td>
-                <td>
-<!--             todo       <a th:href="" class="btn btn-sm btn-primary">PENDING</a>-->
-<!--             todo       <a th:href="" class="btn btn-sm btn-success">ACCEPTED</a>-->
-<!--             todo       <a th:href="" class="btn btn-sm btn-warning">REJECTED</a>-->
-                </td>
-            </tr>
+        <tr th:each="request : ${requestDtoList}" th:object="${request}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{lastName}"></td>
+            <td th:text="*{firstName}"></td>
+            <td th:text="*{email}"></td>
+            <td th:text="*{#temporals.format(dateTimeCreated, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="*{startingDate}"></td>
+            <td th:text="*{endingDate}"></td>
+            <td th:text="*{daysCount}"></td>
+            <td th:text="*{dueDays}"></td>
+            <td th:text="*{status}"></td>
+            <td>
+                <a th:unless="${request.status.name().equals('PENDING')}" class="btn btn-sm btn-primary"
+                   th:href="@{/updateStatus(id=${request.getId()}, status = 'PENDING')}">PENDING</a>
+                <a th:unless="${request.status.name().equals('ACCEPTED')}" class="btn btn-sm btn-success"
+                   th:href="@{/updateStatus(id=${request.getId()}, status = 'ACCEPTED')}">ACCEPTED</a>
+                <a th:unless="${request.status.name().equals('REJECTED')}" class="btn btn-sm btn-warning"
+                   th:href="@{/updateStatus(id=${request.getId()}, status = 'REJECTED')}">REJECTED</a>
+            </td>
+        </tr>
         </tbody>
     </table>
     <div>
-<!--             todo       <a th:href="">Back To Managers Space</a>-->
+        <!--             todo       <a th:href="">Back To Managers Space</a>-->
     </div>
 
 </div>

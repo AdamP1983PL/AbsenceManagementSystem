@@ -73,6 +73,13 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
+    @GetMapping("/{employeeDtoId}/details")
+    public String showEmployeeDetails(@PathVariable("employeeDtoId") Long employeeDtoId, Model model) {
+        EmployeeDto employeeDetailsDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
+        model.addAttribute("employeeDetailsDto", employeeDetailsDto);
+        return "employeeDetails";
+    }
+
 }
 
 
