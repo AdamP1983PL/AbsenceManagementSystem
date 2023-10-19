@@ -39,7 +39,7 @@
       <form action="#"
             method="get"
             role="form"
-            th:action="@{/employees/{employeeDtoId}(employeeDtoId=${employeeDetailsDto.id})/details}"
+            th:action="@{/employees/{employeeDtoId}(employeeDtoId=${employeeDetailsDto.id})/detailsManagersSpace}"
             th:object="${employeeDetailsDto}">
 
         <!--        <div class="">-->
@@ -56,10 +56,11 @@
           <p>Due Days: <span th:text="${employeeDetailsDto.dueDays}"></span> </p>
         </h5>
       </form>
-      <div class="mb-3">
-        <a th:href="@{/employees}">Back to List of Employees</a>
-      </div>
+<!--      <div class="mb-3">-->
+<!--       todo <a th:href="@{employees/managersList}">Back to List of Employees One</a>-->
+<!--      </div>-->
     </div>
+
   </div>
 </div>
 </body>

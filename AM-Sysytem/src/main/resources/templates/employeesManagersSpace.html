@@ -25,15 +25,6 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/employees}">Employee List</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/employees/newEmployee}">Add New Employee</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/managersList}">Managers Empl List</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/requests}">Requests</a>
                 </li>
                 <li class="nav-item">
@@ -47,7 +38,7 @@
 
 <div class="container">
     <div class="row">
-        <h1>List of Employees (admin-mode)</h1>
+        <h1>List of Employees (Manager-mode)</h1>
     </div>
     <br>
     <table class="table table-striped table-hover table-bordered table-primary">
@@ -57,12 +48,10 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>Email</th>
-            <th>Password</th>
             <th>Phone Number</th>
             <th>Employee Role</th>
             <th>Due Days</th>
             <th>Show Details</th>
-            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -71,24 +60,15 @@
             <td th:text="*{lastName}"></td>
             <td th:text="*{firstName}"></td>
             <td th:text="*{email}"></td>
-            <td th:text="*{password}"></td>
             <td th:text="*{phoneNumber}"></td>
             <td th:text="*{employeeRole}"></td>
             <td th:text="*{dueDays}"></td>
             <td>
-                <a th:href="@{/employees/{employeeDtoId}/details(employeeDtoId=${employee.id})}" class="btn btn-primary btn-sm">Details</a>
-            </td>
-            <td>
-                <a th:href="@{/employees/{employeeDtoId}/edit(employeeDtoId=${employee.id})}" class="btn btn-primary btn-sm">Edit</a>
-                <a th:href="@{/employees/{employeeDtoId}/delete(employeeDtoId=${employee.id})}" class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('Delete this employee?'))) return false">Delete</a>
+                <a th:href="@{/employees/{employeeDtoId}/detailsManagersSpace(employeeDtoId=${employee.id})}" class="btn btn-primary btn-sm">Details One</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <div>
-        <a th:href="@{/admin}">Back to Admin Space</a>
-    </div>
 </div>
 </body>
 </html>

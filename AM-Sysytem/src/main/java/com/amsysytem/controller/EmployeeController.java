@@ -26,6 +26,15 @@ public class EmployeeController {
         return "employees";
     }
 
+    @GetMapping("/managersList")
+    public String listEmployeesManagersSpace(Model model) {
+        List<EmployeeDto> employeeDtoList = employeeServiceImpl.getAllEmployees();
+        model.addAttribute("employeeDtoList", employeeDtoList);
+        return "employeesManagersSpace";
+    }
+
+
+
     @GetMapping("/newEmployee")
     public String addNewEmployee(Model model) {
         EmployeeDto employeeDto = new EmployeeDto();
@@ -55,7 +64,7 @@ public class EmployeeController {
 
     @PostMapping("/{employeeDtoId}")
     public String updateEmployee(@PathVariable("employeeDtoId") Long employeeDtoId,
-                                 @Valid @ModelAttribute("emloyeeDto") EmployeeDto employeeDto,
+                                 @Valid @ModelAttribute("employeeDto") EmployeeDto employeeDto,
                                  BindingResult result,
                                  Model model) {
         if (result.hasErrors()) {
@@ -78,6 +87,13 @@ public class EmployeeController {
         EmployeeDto employeeDetailsDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
         model.addAttribute("employeeDetailsDto", employeeDetailsDto);
         return "employeeDetails";
+    }
+
+    @GetMapping("/{employeeDtoId}/detailsManagersSpace")
+    public String showEmployeeDetailsManagersSpace(@PathVariable("employeeDtoId") Long employeeDtoId, Model model) {
+        EmployeeDto employeeDetailsDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
+        model.addAttribute("employeeDetailsDto", employeeDetailsDto);
+        return "employeeDetailsManagersSpace";
     }
 
 }
