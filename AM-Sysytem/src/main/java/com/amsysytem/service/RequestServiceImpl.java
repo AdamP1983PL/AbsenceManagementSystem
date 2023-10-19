@@ -8,11 +8,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class RequestServiceImpl implements RequestService{
+public class RequestServiceImpl implements RequestService {
 
     public final RequestRepository requestRepository;
 
@@ -32,11 +33,46 @@ public class RequestServiceImpl implements RequestService{
 
     @Override
     public void updateRequest(RequestDto requestDto) {
-
+        requestRepository.save(RequestMapper.mapToRequest(requestDto));
     }
 
     @Override
     public void deleteRequest(Long id) {
+        requestRepository.deleteById(id);
+    }
 
+    @Override
+    public RequestDto getRequestDtoById(Long requestDtoId) {
+        Optional<Request> tempRequest = requestRepository.findById(requestDtoId);
+
+        Request request;
+        if (tempRequest.isPresent()) {
+            request = tempRequest.get();
+        } else {
+            throw new RuntimeException("There is no request for id: " + requestDtoId);
+        }
+        return RequestMapper.mapToRequestDto(request);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

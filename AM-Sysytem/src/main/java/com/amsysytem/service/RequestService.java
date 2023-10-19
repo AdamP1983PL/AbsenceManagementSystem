@@ -18,4 +18,5 @@ public interface RequestService {
 
     void deleteRequest(Long id);
 
+    RequestDto getRequestDtoById(Long requestDtoId);
 }

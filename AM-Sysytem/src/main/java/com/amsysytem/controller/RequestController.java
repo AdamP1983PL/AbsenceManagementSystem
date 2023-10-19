@@ -8,10 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -63,6 +60,50 @@ public class RequestController {
         requestServiceImpl.save(existing);
         return "redirect:/requests";
     }
+
+    @GetMapping("/{requestDtoId}/edit")
+    public String editRequestAdminMode(@PathVariable("requestDtoId") Long requestDtoId, Model model){
+        RequestDto requestDto = requestServiceImpl.getRequestDtoById(requestDtoId);
+        model.addAttribute("requestDto", requestDto);
+        return "editRequestAdminSpace";
+    }
+
+    @PostMapping("/{requestDtoId}")
+    public String updateRequest(@PathVariable("requestDtoId") Long requestDtoId,
+                                @Valid @ModelAttribute("requestDto") RequestDto requestDto,
+                                BindingResult result,
+                                Model model){
+        if(result.hasErrors()){
+            model.addAttribute("requestDto", requestDto);
+            return "editRequestAdminSpace";
+        }
+        requestDto.setId(requestDtoId);
+        requestServiceImpl.updateRequest(requestDto);
+        return "redirect:/requests";
+    }
+
+    @GetMapping("listRequestsAdminMode/{requestDtoId}/delete")
+    public String deleteRequest(@PathVariable("requestDtoId") Long requestDtoId){
+        requestServiceImpl.deleteRequest(requestDtoId);
+        return "redirect:/requests-admin-mode";
+//        todo delete working, mapping not working
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
