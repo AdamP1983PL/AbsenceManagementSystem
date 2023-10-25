@@ -32,6 +32,15 @@ public class RequestController {
         return "requests-admin-mode";
     }
 
+    @GetMapping("listRequestsManagerMode")
+    public String listRequestsManagerMode(Model model) {
+        List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
+        model.addAttribute("requestDtoList", requestDtoList);
+        return "requests-manager-mode";
+    }
+
+
+
     @GetMapping("/addNewRequest")
     public String addNewRequest(Model model) {
         RequestDto requestDtoToAdd = new RequestDto();
