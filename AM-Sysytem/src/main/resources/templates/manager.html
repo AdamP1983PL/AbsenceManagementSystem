@@ -21,9 +21,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
                 </li>
-                <!--        <li class="nav-item">-->
-                <!--          <a class="nav-link active" aria-current="page" th:href="@{/register}">Register</a>-->
-                <!--        </li>-->
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
                 </li>
@@ -38,30 +35,23 @@
 <div class="container">
     <div class="text-center">
         <div>
-            <h1>This is Admin Space.</h1>
+            <h1>This is Manager Space.</h1>
         </div>
         <br>
         <br>
         <p>
-        <div>
-            <a th:href="@{/employees}">
-                <h3>All Employee List</h3>
-            </a>
-        </div>
+            <div>
+                <a th:href="@{employees/managersList}">
+                    <h3>All Employee List</h3>
+                </a>
+            </div>
         </p>
         <p>
-        <div>
-            <a th:href="@{/employees/newEmployee}">
-                <h3>Add New Employee</h3>
-            </a>
-        </div>
-        </p>
-        <p>
-        <div>
-            <a th:href="@{/listRequestsAdminMode}">
-                <h3>All Requests List</h3>
-            </a>
-        </div>
+            <div>
+                <a th:href="@{/listRequestsAdminMode}">
+                    <h3>All Requests List</h3>
+                </a>
+            </div>
         </p>
         <br>
         <p>
@@ -70,9 +60,9 @@
         </div>
         </p>
     </div>
+
 </div>
 </body>
 </html>
 
 <!--todo Employee Management == Home th:href-->
-

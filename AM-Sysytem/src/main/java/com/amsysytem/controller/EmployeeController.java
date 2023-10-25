@@ -26,6 +26,13 @@ public class EmployeeController {
         return "employees";
     }
 
+//    @GetMapping("/employees-managers-list")
+//    public String listEmployeesManagerMode(Model model){
+//        List<EmployeeDto> employeeDtoList = employeeServiceImpl.getAllEmployees();
+//        model.addAttribute("employeeDtoList", employeeDtoList);
+//        return "employees-manager-mode";
+//    }
+
     @GetMapping("/managersList")
     public String listEmployeesManagersSpace(Model model) {
         List<EmployeeDto> employeeDtoList = employeeServiceImpl.getAllEmployees();

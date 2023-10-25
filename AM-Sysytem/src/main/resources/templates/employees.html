@@ -28,7 +28,8 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/employees}">Employee List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/employees/newEmployee}">Add New Employee</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/employees/newEmployee}">Add New
+                        Employee</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/managersList}">Managers Empl List</a>
@@ -61,8 +62,16 @@
             <th>Phone Number</th>
             <th>Employee Role</th>
             <th>Due Days</th>
-            <th>Show Details</th>
-            <th>Action</th>
+            <th>
+                <div class="text-center">
+                    Show Details
+                </div>
+            </th>
+            <th>
+                <div class="text-center">
+                    Action
+                </div>
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -76,12 +85,19 @@
             <td th:text="*{employeeRole}"></td>
             <td th:text="*{dueDays}"></td>
             <td>
-                <a th:href="@{/employees/{employeeDtoId}/details(employeeDtoId=${employee.id})}" class="btn btn-primary btn-sm">Details</a>
+                <div class="text-center">
+                    <a th:href="@{/employees/{employeeDtoId}/details(employeeDtoId=${employee.id})}"
+                       class="btn btn-primary btn-sm">Details</a>
+                </div>
             </td>
             <td>
-                <a th:href="@{/employees/{employeeDtoId}/edit(employeeDtoId=${employee.id})}" class="btn btn-primary btn-sm">Edit</a>
-                <a th:href="@{/employees/{employeeDtoId}/delete(employeeDtoId=${employee.id})}" class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('Delete this employee?'))) return false">Delete</a>
+                <div class="text-center">
+                    <a th:href="@{/employees/{employeeDtoId}/edit(employeeDtoId=${employee.id})}"
+                       class="btn btn-primary btn-sm">Edit</a>
+                    <a th:href="@{/employees/{employeeDtoId}/delete(employeeDtoId=${employee.id})}"
+                       class="btn btn-danger btn-sm"
+                       onclick="if (!(confirm('Delete this employee?'))) return false">Delete</a>
+                </div>
             </td>
         </tr>
         </tbody>

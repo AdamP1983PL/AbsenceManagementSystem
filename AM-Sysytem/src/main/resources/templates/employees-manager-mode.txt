@@ -25,6 +25,15 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/employees}">Employee List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/employees/newEmployee}">Add New Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/managersList}">Managers Empl List</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/requests}">Requests</a>
                 </li>
                 <li class="nav-item">
@@ -51,16 +60,7 @@
             <th>Phone Number</th>
             <th>Employee Role</th>
             <th>Due Days</th>
-            <th>
-                <div class="text-center">
-                    Requests
-                </div>
-            </th>
-            <th>
-                <div class="text-center">
-                    Show Details
-                </div>
-            </th>
+            <th>Show Details</th>
         </tr>
         </thead>
         <tbody>
@@ -73,19 +73,13 @@
             <td th:text="*{employeeRole}"></td>
             <td th:text="*{dueDays}"></td>
             <td>
-                <div class="text-center">
-                    <a href="" class="btn btn-info btn-sm">Requests</a>
-                    <!--                todo link to given employee requests-->
-                </div>
-
+                <a th:href="@{/employees/{employeeDtoId}/details(employeeDtoId=${employee.id})}" class="btn btn-primary btn-sm">Details</a>
             </td>
-            <td>
-                <div class="text-center">
-                    <a th:href="@{/employees/{employeeDtoId}/detailsManagersSpace(employeeDtoId=${employee.id})}"
-                       class="btn btn-primary btn-sm">Details</a>
-                </div>
-
-            </td>
+<!--            <td>-->
+<!--                <a th:href="@{/employees/{employeeDtoId}/edit(employeeDtoId=${employee.id})}" class="btn btn-primary btn-sm">Edit</a>-->
+<!--                <a th:href="@{/employees/{employeeDtoId}/delete(employeeDtoId=${employee.id})}" class="btn btn-danger btn-sm"-->
+<!--                   onclick="if (!(confirm('Delete this employee?'))) return false">Delete</a>-->
+<!--            </td>-->
         </tr>
         </tbody>
     </table>
@@ -95,5 +89,3 @@
 </div>
 </body>
 </html>
-
-<!-- todo remove duplicate code from navbar in all templates-->

@@ -22,10 +22,7 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/requests}">Requests</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/employees}">Employee List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
@@ -35,10 +32,9 @@
     </div>
 </nav>
 <br>
-
 <div class="container">
     <div class="row">
-        <h1>List of Employees (manager-mode)</h1>
+        <h1>Requests List - Admin Place</h1>
     </div>
     <br>
     <table class="table table-striped table-hover table-bordered table-primary">
@@ -48,52 +44,45 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>Email</th>
-            <th>Phone Number</th>
-            <th>Employee Role</th>
+            <th>Date-Time Created</th>
+            <th>Starting Date</th>
+            <th>Ending Date</th>
+            <th>Days Count</th>
             <th>Due Days</th>
-            <th>
-                <div class="text-center">
-                    Requests
-                </div>
-            </th>
-            <th>
-                <div class="text-center">
-                    Show Details
-                </div>
-            </th>
+            <th>Status</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="employee : ${employeeDtoList}" th:object="${employee}">
+        <tr th:each="request : ${requestDtoList}" th:object="${request}">
             <td th:text="*{id}"></td>
             <td th:text="*{lastName}"></td>
             <td th:text="*{firstName}"></td>
             <td th:text="*{email}"></td>
-            <td th:text="*{phoneNumber}"></td>
-            <td th:text="*{employeeRole}"></td>
+            <td th:text="*{dateTimeCreated}"></td>
+            <td th:text="*{startingDate}"></td>
+            <td th:text="*{endingDate}"></td>
+            <td th:text="*{daysCount}"></td>
             <td th:text="*{dueDays}"></td>
-            <td>
-                <div class="text-center">
-                    <a href="" class="btn btn-info btn-sm">Requests</a>
-                    <!--                todo link to given employee requests-->
-                </div>
+            <td th:text="*{status}"></td>
 
-            </td>
             <td>
-                <div class="text-center">
-                    <a th:href="@{/employees/{employeeDtoId}/detailsManagersSpace(employeeDtoId=${employee.id})}"
-                       class="btn btn-primary btn-sm">Details</a>
-                </div>
+                <a th:href="@{/listRequestsAdminMode/{requestDtoId}/edit(requestDtoId=${request.id})}"
+                   class="btn btn-info btn-sm">Edit</a>
+                <!--    todo           edit request by admin not working-->
 
+
+                <a th:href="@{listRequestsAdminMode/{requestDtoId}/delete(requestDtoId=${request.id})}" class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Delete this request?'))) return false">Delete</a>
             </td>
         </tr>
+
         </tbody>
     </table>
     <div>
-        <a th:href="@{/manager}">Back to Manager Space</a>
+        <!-- todo    <a th:href="">Back To Admin Space</a>-->
     </div>
+
 </div>
 </body>
 </html>
-
-<!-- todo remove duplicate code from navbar in all templates-->
