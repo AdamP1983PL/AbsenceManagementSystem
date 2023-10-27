@@ -22,23 +22,23 @@ public class Request {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
     @CreationTimestamp
-    @Column(name = "created")
+    @Column(name = "created", nullable = false)
     private LocalDateTime dateTimeCreated;
 
-    @Column(name = "starting_date")
+    @Column(name = "starting_date", nullable = false)
     private LocalDate startingDate;
 
-    @Column(name = "Ending_date")
+    @Column(name = "Ending_date", nullable = false)
     private LocalDate endingDate;
 
     @Column(name = "days_count")

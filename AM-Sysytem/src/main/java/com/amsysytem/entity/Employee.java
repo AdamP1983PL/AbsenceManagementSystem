@@ -21,26 +21,26 @@ public class Employee {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "employee_role")
+    @Column(name = "employee_role", nullable = false)
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
 
-    @Column(name = "due_days")
+    @Column(name = "due_days", nullable = false)
     private int dueDays;
 
     @OneToMany(fetch = FetchType.EAGER,
