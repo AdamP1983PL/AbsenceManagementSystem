@@ -1,17 +1,17 @@
 package com.amsysytem.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
-@Entity
-@Data
-@Table(name = "users")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -31,15 +31,5 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID")})
     private Set<Authority> authorities;
 
-    @Column(name = "account_not_expired", nullable = false)
-    private Boolean accountNotExpired = true;
-
-    @Column(name = "account_not_locked", nullable = false)
-    private Boolean accountNonLocked = true;
-
-    @Column(name = "Credentials_not_expired", nullable = false)
-    private Boolean credentialsNonExpired = true;
-
-    @Column(name = "enabled", nullable = false)
-    private Boolean enabled = true;
 }
+

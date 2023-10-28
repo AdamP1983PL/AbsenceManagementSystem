@@ -2,18 +2,18 @@ package com.amsysytem.entity;
 
 import com.amsysytem.enums.EmployeeRole;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Data
-@Table(name = "employees")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Entity
+@Table(name = "employees")
 public class Employee {
 
     @Id

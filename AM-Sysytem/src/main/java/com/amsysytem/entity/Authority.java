@@ -1,10 +1,17 @@
 package com.amsysytem.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
+@Table(name = "authority")
 public class Authority {
 
     @Id
