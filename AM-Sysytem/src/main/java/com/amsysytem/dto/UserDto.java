@@ -18,7 +18,7 @@ public class UserDto {
     private Long id;
 
     @NotEmpty(message = "User Name should not be empty")
-    private String userName;
+    private String username;
 
     @NotEmpty(message = "Password should not be empty")
     private String password;
