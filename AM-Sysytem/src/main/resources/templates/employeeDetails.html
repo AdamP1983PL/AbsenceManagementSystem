@@ -9,13 +9,13 @@
 <div class="container row col-md-6 offset-md-3">
     <div class="card">
         <div class="card-header">
-            <h2>Employee Details</h2>
+            <h3>Employee Details</h2>
         </div>
         <div class="card-body">
             <form action="#"
                   method="get"
                   role="form"
-                  th:action="@{/employees/{employeeDtoId}(employeeDtoId=${employeeDetailsDto.id})/details}"
+                  th:action="@{admin/{employeeDtoId}(employeeDtoId=${employeeDetailsDto.id})/details}"
                   th:object="${employeeDetailsDto}">
 
                 <!--        <div class="">-->
@@ -50,7 +50,7 @@
                 </h5>
             </form>
             <div class="mb-3">
-                <a th:href="@{/employees}">Back to List of Employees</a>
+                <a th:href="@{/admin/employees}">Back to List of Employees</a>
             </div>
         </div>
     </div>

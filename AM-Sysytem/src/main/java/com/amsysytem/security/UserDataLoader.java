@@ -21,10 +21,10 @@ public class UserDataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
     }
-
-    private final AuthorityRepository authorityRepository;
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+//
+//    private final AuthorityRepository authorityRepository;
+//    private final UserRepository userRepository;
+//    private final PasswordEncoder passwordEncoder;
 
 //    private void loadSecurityData() {
 //        Authority admin = authorityRepository.save(Authority.builder().role("ROLE_ADMIN").build());

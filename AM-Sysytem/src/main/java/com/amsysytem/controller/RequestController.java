@@ -26,20 +26,21 @@ public class RequestController {
         return "requests";
     }
 
-    @GetMapping("/listRequestsAdminMode")
+//    todo /admin
+    @GetMapping("admin/listRequestsAdminMode")
     public String listRequestsAdminMode(Model model) {
         List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
         model.addAttribute("requestDtoList", requestDtoList);
         return "requests-admin-mode";
     }
 
-    @GetMapping("listRequestsManagerMode")
+//    todo /manager
+    @GetMapping("manager/listRequestsManagerMode")
     public String listRequestsManagerMode(Model model) {
         List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
         model.addAttribute("requestDtoList", requestDtoList);
         return "requests-manager-mode";
     }
-
 
 
     @GetMapping("/addNewRequest")

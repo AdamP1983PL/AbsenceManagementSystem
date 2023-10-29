@@ -9,11 +9,11 @@
 <div class="container row col-md-6 offset-md-3">
     <div class="card">
         <div class="card-header">
-            <h2>Create Employee</h2>
+            <h4>Create Employee</h4>
         </div>
         <div class="card-body">
             <form action="#" method="post" role="form"
-                  th:action="@{/employees/save}" th:object="${employeeDto}">
+                  th:action="@{/admin/saveNewEmployee}" th:object="${employeeDto}">
 
                 <div class="form-group mb-3">
                     <label class="form-label">Last Name</label>
@@ -69,7 +69,7 @@
 
             </form>
             <div class="mb-3">
-                <a th:href="@{/employees}">Proceed to Employee List</a>
+                <a th:href="@{/admin/employees}">Proceed to Employee List</a>
             </div>
             <div>
                 <a th:href="@{/admin}">Back to Admin Space</a>

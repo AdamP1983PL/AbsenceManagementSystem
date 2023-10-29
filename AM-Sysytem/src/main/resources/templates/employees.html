@@ -9,7 +9,7 @@
 
 <div class="container">
     <div class="row">
-        <h1>List of Employees (admin-mode)</h1>
+        <h3>List of all Employees (admin-mode)</h3>
     </div>
     <br>
     <table class="table table-striped table-hover table-bordered table-primary">
@@ -47,15 +47,15 @@
             <td th:text="*{dueDays}"></td>
             <td>
                 <div class="text-center">
-                    <a th:href="@{/employees/{employeeDtoId}/details(employeeDtoId=${employee.id})}"
+                    <a th:href="@{{employeeDtoId}/details(employeeDtoId=${employee.id})}"
                        class="btn btn-primary btn-sm">Details</a>
                 </div>
             </td>
             <td>
                 <div class="text-center">
-                    <a th:href="@{/employees/{employeeDtoId}/edit(employeeDtoId=${employee.id})}"
+                    <a th:href="@{{employeeDtoId}/edit(employeeDtoId=${employee.id})}"
                        class="btn btn-primary btn-sm">Edit</a>
-                    <a th:href="@{/employees/{employeeDtoId}/delete(employeeDtoId=${employee.id})}"
+                    <a th:href="@{{employeeDtoId}/delete(employeeDtoId=${employee.id})}"
                        class="btn btn-danger btn-sm"
                        onclick="if (!(confirm('Delete this employee?'))) return false">Delete</a>
                 </div>
@@ -63,9 +63,17 @@
         </tr>
         </tbody>
     </table>
+    <hr>
+    <p>
+    <div>
+        <a th:href="@{/admin/newEmployee}">Add New Employee</a>
+    </div>
+    </p>
+    <p>
     <div>
         <a th:href="@{/admin}">Back to Admin Space</a>
     </div>
+    </p>
 </div>
 </body>
 </html>

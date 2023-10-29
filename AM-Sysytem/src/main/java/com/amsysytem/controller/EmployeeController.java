@@ -13,13 +13,13 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/employees")
+//@RequestMapping("")
 public class EmployeeController {
 
     private final EmployeeServiceImpl employeeServiceImpl;
 
-
-    @GetMapping("")
+//  todo /admin
+    @GetMapping("admin/employees")
     public String listEmployees(Model model) {
         List<EmployeeDto> employeeDtoList = employeeServiceImpl.getAllEmployees();
         model.addAttribute("employeeDtoList", employeeDtoList);
@@ -33,7 +33,8 @@ public class EmployeeController {
 //        return "employees-manager-mode";
 //    }
 
-    @GetMapping("/managersList")
+//    todo /manager
+    @GetMapping("manager/managersList")
     public String listEmployeesManagersSpace(Model model) {
         List<EmployeeDto> employeeDtoList = employeeServiceImpl.getAllEmployees();
         model.addAttribute("employeeDtoList", employeeDtoList);
@@ -42,14 +43,15 @@ public class EmployeeController {
 
 
 
-    @GetMapping("/newEmployee")
+    @GetMapping("/admin/newEmployee")
     public String addNewEmployee(Model model) {
         EmployeeDto employeeDto = new EmployeeDto();
         model.addAttribute("employeeDto", employeeDto);
         return "addNewEmployee";
     }
 
-    @PostMapping("/save")
+//    todo /admin
+    @PostMapping("admin/saveNewEmployee")
     public String saveNewEmployee(@Valid @ModelAttribute("employeeDto") EmployeeDto employeeDto,
                                   BindingResult result,
                                   Model model) {
@@ -59,17 +61,19 @@ public class EmployeeController {
         }
 
         employeeServiceImpl.save(employeeDto);
-        return "redirect:/employees";
+        return "redirect:/admin/employees";
     }
 
-    @GetMapping("/{employeeDtoId}/edit")
+//    todo /admin
+    @GetMapping("admin/{employeeDtoId}/edit")
     public String editEmployee(@PathVariable("employeeDtoId") Long employeeDtoId, Model model) {
         EmployeeDto employeeDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
         model.addAttribute("employeeDto", employeeDto);
         return "editEmployee";
     }
 
-    @PostMapping("/{employeeDtoId}")
+//    todo /admin
+    @PostMapping("/admin/{employeeDtoId}")
     public String updateEmployee(@PathVariable("employeeDtoId") Long employeeDtoId,
                                  @Valid @ModelAttribute("employeeDto") EmployeeDto employeeDto,
                                  BindingResult result,
@@ -80,23 +84,26 @@ public class EmployeeController {
         }
         employeeDto.setId(employeeDtoId);
         employeeServiceImpl.updateEmployee(employeeDto);
-        return "redirect:/employees";
+        return "redirect:/admin/employees";
     }
 
-    @GetMapping("/{employeeDtoId}/delete")
+//    todo /admin
+    @GetMapping("admin/{employeeDtoId}/delete")
     public String deleteEmployee(@PathVariable("employeeDtoId") Long employeeDtoId) {
         employeeServiceImpl.deleteEmployee(employeeDtoId);
-        return "redirect:/employees";
+        return "redirect:/admin/employees";
     }
 
-    @GetMapping("/{employeeDtoId}/details")
+//    todo /admin
+    @GetMapping("admin/{employeeDtoId}/details")
     public String showEmployeeDetails(@PathVariable("employeeDtoId") Long employeeDtoId, Model model) {
         EmployeeDto employeeDetailsDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
         model.addAttribute("employeeDetailsDto", employeeDetailsDto);
         return "employeeDetails";
     }
 
-    @GetMapping("/{employeeDtoId}/detailsManagersSpace")
+//    todo /manager
+    @GetMapping("/manager/{employeeDtoId}/detailsManagersSpace")
     public String showEmployeeDetailsManagersSpace(@PathVariable("employeeDtoId") Long employeeDtoId, Model model) {
         EmployeeDto employeeDetailsDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
         model.addAttribute("employeeDetailsDto", employeeDetailsDto);
