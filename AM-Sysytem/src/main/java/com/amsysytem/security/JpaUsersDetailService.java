@@ -19,32 +19,35 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class JpaUsersDetailService implements UserDetailsService {
+//public class JpaUsersDetailService implements UserDetailsService {
+public class JpaUsersDetailService {
 
-    private final UserRepository userRepository;
+//    private final UserRepository userRepository;
 
-    @Transactional
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//    @Transactional
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userRepository.findByUsername(username).orElseThrow(() -> {
-            return new UsernameNotFoundException("User name: " + username + " not found");
-        });
-
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
-                user.getPassword(),
-                convertToStringAuthorities(user.getAuthorities()));
-    }
-
-    private Collection<? extends GrantedAuthority> convertToStringAuthorities(Set<Authority> authorities) {
-        if (authorities != null & authorities.size() > 0) {
-            return authorities.stream()
-                    .map(Authority::getRole)
-                    .map(SimpleGrantedAuthority::new)
-                    .collect(Collectors.toSet());
-        } else {
-            return new HashSet<>();
-        }
-    }
+//        User user = userRepository.findByUsername(username).orElseThrow(() -> {
+//            return new UsernameNotFoundException("User name: " + username + " not found");
+//        });
+//
+//        return new org.springframework.security.core.userdetails.User(
+//                user.getUsername(),
+//                user.getPassword(),
+//                convertToStringAuthorities(user.getAuthorities()));
+//    }
+//
+//    private Collection<? extends GrantedAuthority> convertToStringAuthorities(Set<Authority> authorities) {
+//        if (authorities != null & authorities.size() > 0) {
+//            return authorities.stream()
+//                    .map(Authority::getRole)
+//                    .map(SimpleGrantedAuthority::new)
+//                    .collect(Collectors.toSet());
+//        } else {
+//            return new HashSet<>();
+//        }
+//    }
+//    }
+//}
 }
