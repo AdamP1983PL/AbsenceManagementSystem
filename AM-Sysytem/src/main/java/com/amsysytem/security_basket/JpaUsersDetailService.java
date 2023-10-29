@@ -1,4 +1,4 @@
-package com.amsysytem.security;
+package com.amsysytem.security_basket;
 
 import com.amsysytem.entity.Authority;
 import com.amsysytem.entity.User;

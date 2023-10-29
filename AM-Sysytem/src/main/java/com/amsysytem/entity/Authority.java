@@ -1,6 +1,5 @@
 package com.amsysytem.entity;
 
-
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "authority")
+@Table(name = "roles")
 public class Authority {
 
     @Id
