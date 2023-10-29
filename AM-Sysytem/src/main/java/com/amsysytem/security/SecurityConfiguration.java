@@ -29,6 +29,7 @@ public class SecurityConfiguration {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/register/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
 //                .authorizeRequests((authorize) -> authorize
@@ -56,13 +57,7 @@ public class SecurityConfiguration {
                 .roles("MANAGER")
                 .build();
 
-        UserDetails user = User.builder()
-                .username("user")
-                .password("{noop}user")
-                .roles("USER")
-                .build();
-
-        return new InMemoryUserDetailsManager(admin, manager, user);
+        return new InMemoryUserDetailsManager(admin, manager);
     }
 
     @Bean
