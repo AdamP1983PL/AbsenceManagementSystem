@@ -1,7 +1,6 @@
 package com.amsysytem.security;
 
 import com.amsysytem.entity.Authority;
-import com.amsysytem.entity.User;
 import com.amsysytem.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -21,14 +19,14 @@ import java.util.stream.Collectors;
 public class CustomUserDetailsService implements UserDetailsService {
 
     /*
-    * UserDetailsService loads user (if exists) from the database
-    * */
+     * UserDetailsService loads user (if exists) from the database
+     * */
 
     private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).orElseThrow(
+        com.amsysytem.entity.User user = userRepository.findByUsername(username).orElseThrow(
                 () -> new UsernameNotFoundException("There is no user for username: " + username));
 
         return new org.springframework.security.core.userdetails.User(
@@ -37,7 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 mapUserAuthoritiesToGrantedAuthorities(user.getAuthorities()));
     }
 
-    private Collection<GrantedAuthority> mapUserAuthoritiesToGrantedAuthorities (Set<Authority> authorities){
+    private Collection<GrantedAuthority> mapUserAuthoritiesToGrantedAuthorities(Set<Authority> authorities) {
         return authorities.stream()
                 .map(authority -> new SimpleGrantedAuthority(authority.getRole()))
                 .collect(Collectors.toSet());

@@ -37,6 +37,8 @@ public class Employee {
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
+    //    todo private Authority authority?????
+
     @Column(name = "employee_role", nullable = false)
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
