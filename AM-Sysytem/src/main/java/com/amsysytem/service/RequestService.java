@@ -1,6 +1,7 @@
 package com.amsysytem.service;
 
 import com.amsysytem.dto.RequestDto;
+import com.amsysytem.dto.UserDto;
 
 import java.util.List;
 
@@ -19,4 +20,7 @@ public interface RequestService {
     void deleteRequest(Long id);
 
     RequestDto getRequestDtoById(Long requestDtoId);
+
+    List<RequestDto> findRequestsByUserId(Long id);
+
 }

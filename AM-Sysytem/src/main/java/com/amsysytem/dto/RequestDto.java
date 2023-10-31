@@ -1,6 +1,7 @@
 package com.amsysytem.dto;
 
 import com.amsysytem.entity.Employee;
+import com.amsysytem.entity.User;
 import com.amsysytem.enums.Status;
 
 import lombok.AllArgsConstructor;
@@ -49,4 +50,6 @@ public class RequestDto {
     private Status status;
 
     private Employee employee;
+
+    private User user;
 }

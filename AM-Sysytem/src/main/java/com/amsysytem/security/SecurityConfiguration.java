@@ -21,15 +21,15 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
-    @Autowired
-    private final CustomUserDetailsService userDetailsService;
+//    @Autowired
+//    private final CustomUserDetailsService userDetailsService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/register/**").permitAll()
+//                .antMatchers("/register/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
 //                .authorizeRequests((authorize) -> authorize
@@ -60,14 +60,14 @@ public class SecurityConfiguration {
         return new InMemoryUserDetailsManager(admin, manager);
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public AuthenticationManager authenticationManager(
+//            AuthenticationConfiguration authenticationConfiguration) throws Exception {
+//        return authenticationConfiguration.getAuthenticationManager();
+//    }
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 }

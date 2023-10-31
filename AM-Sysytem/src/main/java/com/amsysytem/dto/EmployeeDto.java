@@ -1,6 +1,7 @@
 package com.amsysytem.dto;
 
 import com.amsysytem.entity.Request;
+import com.amsysytem.entity.User;
 import com.amsysytem.enums.EmployeeRole;
 
 import lombok.AllArgsConstructor;
@@ -46,4 +47,7 @@ public class EmployeeDto {
     private int dueDays;
 
     private List<Request> request = new ArrayList<>();
+
+    private User user;
+
 }

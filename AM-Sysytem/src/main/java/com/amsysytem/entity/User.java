@@ -3,7 +3,9 @@ package com.amsysytem.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -28,9 +30,16 @@ public class User {
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
-            joinColumns = {@JoinColumn(name = "USER_Id", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")})
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Set<Authority> authorities = new HashSet<>();
+
+    @OneToOne
+    @JoinColumn(name = "fk_employee")
+    private Employee employee;
+
+    @OneToMany(mappedBy = "user")
+    private List<Request> requests = new ArrayList<>();
 
 }
 

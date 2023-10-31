@@ -10,7 +10,9 @@ public class UserMapper {
                 user.getId(),
                 user.getUsername(),
                 user.getPassword(),
-                user.getAuthorities()
+                user.getAuthorities(),
+                user.getEmployee(),
+                user.getRequests()
         );
     }
 
@@ -19,7 +21,9 @@ public class UserMapper {
                 userDto.getId(),
                 userDto.getUsername(),
                 userDto.getPassword(),
-                userDto.getAuthorities()
+                userDto.getAuthorities(),
+                userDto.getEmployee(),
+                userDto.getRequests()
         );
     }
 }

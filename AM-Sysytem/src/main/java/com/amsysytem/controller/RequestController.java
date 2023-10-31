@@ -26,7 +26,6 @@ public class RequestController {
         return "requests";
     }
 
-//    todo /admin
     @GetMapping("admin/listRequestsAdminMode")
     public String listRequestsAdminMode(Model model) {
         List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
@@ -34,14 +33,12 @@ public class RequestController {
         return "requests-admin-mode";
     }
 
-//    todo /manager
     @GetMapping("manager/listRequestsManagerMode")
     public String listRequestsManagerMode(Model model) {
         List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
         model.addAttribute("requestDtoList", requestDtoList);
         return "requests-manager-mode";
     }
-
 
     @GetMapping("/addNewRequest")
     public String addNewRequest(Model model) {
@@ -66,6 +63,7 @@ public class RequestController {
 
     @GetMapping("/updateStatus")
     public String updateStatus(@RequestParam Integer id, @RequestParam Status status){
+//      todo  RequestDto existing = requestServiceImpl.getAllRequests().get(id-1); id-1 ??????????
         RequestDto existing = requestServiceImpl.getAllRequests().get(id-1);
         existing.setStatus(status);
         requestServiceImpl.save(existing);

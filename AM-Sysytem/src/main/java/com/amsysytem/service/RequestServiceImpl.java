@@ -1,11 +1,14 @@
 package com.amsysytem.service;
 
 import com.amsysytem.dto.RequestDto;
+import com.amsysytem.entity.Employee;
 import com.amsysytem.entity.Request;
+import com.amsysytem.entity.User;
 import com.amsysytem.mappers.RequestMapper;
 import com.amsysytem.repositories.RequestRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,10 +23,19 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public List<RequestDto> getAllRequests() {
         List<Request> requests = requestRepository.findAll();
-        List<RequestDto> requestDtos = requests.stream()
-                .map((request) -> RequestMapper.mapToRequestDto(request))
+
+        return requests.stream()
+                .map(RequestMapper::mapToRequestDto)
                 .collect(Collectors.toList());
-        return requestDtos;
+    }
+
+    @Override
+    public List<RequestDto> findRequestsByUserId(Long id) {
+        Optional<Request> requestsByUserId = requestRepository.findById(id);
+
+        return requestsByUserId.stream()
+                .map(RequestMapper::mapToRequestDto)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -53,6 +65,8 @@ public class RequestServiceImpl implements RequestService {
         }
         return RequestMapper.mapToRequestDto(request);
     }
+
+
 }
 
 

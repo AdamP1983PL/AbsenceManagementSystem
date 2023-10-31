@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -59,4 +60,8 @@ public class Request {
     )
     @JoinColumn(name = "employee_id")
     private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_user")
+    private User user;
 }
