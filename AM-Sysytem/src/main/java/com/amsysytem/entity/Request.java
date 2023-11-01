@@ -1,6 +1,5 @@
 package com.amsysytem.entity;
 
-
 import com.amsysytem.enums.Status;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -65,3 +64,5 @@ public class Request {
     @JoinColumn(name = "fk_user")
     private User user;
 }
+
+// todo rename request!!!!
