@@ -17,8 +17,7 @@ public class RequestMapper {
                 request.getDaysCount(),
                 request.getDueDays(),
                 request.getStatus(),
-                request.getEmployee(),
-                request.getUser()
+                request.getEmployee()
         );
     }
 
@@ -34,8 +33,7 @@ public class RequestMapper {
                 requestDto.getDaysCount(),
                 requestDto.getDueDays(),
                 requestDto.getStatus(),
-                requestDto.getEmployee(),
-                requestDto.getUser()
+                requestDto.getEmployee()
         );
     }
 }

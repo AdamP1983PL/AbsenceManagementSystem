@@ -1,14 +1,11 @@
 package com.amsysytem.service;
 
 import com.amsysytem.dto.RequestDto;
-import com.amsysytem.entity.Employee;
 import com.amsysytem.entity.Request;
-import com.amsysytem.entity.User;
 import com.amsysytem.mappers.RequestMapper;
 import com.amsysytem.repositories.RequestRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -65,8 +62,6 @@ public class RequestServiceImpl implements RequestService {
         }
         return RequestMapper.mapToRequestDto(request);
     }
-
-
 }
 
 

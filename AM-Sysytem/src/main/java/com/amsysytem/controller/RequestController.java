@@ -95,7 +95,7 @@ public class RequestController {
     public String deleteRequest(@PathVariable("requestDtoId") Long requestDtoId){
         requestServiceImpl.deleteRequest(requestDtoId);
         return "redirect:/requests-admin-mode";
-//        todo delete working, mapping not working
+
     }
 
 

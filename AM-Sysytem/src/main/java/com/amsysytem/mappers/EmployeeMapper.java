@@ -15,8 +15,7 @@ public class EmployeeMapper {
                 employee.getPhoneNumber(),
                 employee.getEmployeeRole(),
                 employee.getDueDays(),
-                employee.getRequest(),
-                employee.getUser()
+                employee.getRequest()
         );
     }
 
@@ -30,8 +29,7 @@ public class EmployeeMapper {
                 employeeDto.getPhoneNumber(),
                 employeeDto.getEmployeeRole(),
                 employeeDto.getDueDays(),
-                employeeDto.getRequest(),
-                employeeDto.getUser()
+                employeeDto.getRequest()
         );
     }
 }

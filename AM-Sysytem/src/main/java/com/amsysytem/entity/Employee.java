@@ -1,6 +1,7 @@
 package com.amsysytem.entity;
 
 import com.amsysytem.enums.EmployeeRole;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -49,7 +50,4 @@ public class Employee {
             mappedBy = "employee",
             cascade = CascadeType.ALL)
     private List<Request> request = new ArrayList<>();
-
-    @OneToOne(mappedBy = "employee")
-    private User user;
 }
