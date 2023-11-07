@@ -3,15 +3,15 @@ package com.amsysytem.dto;
 import com.amsysytem.entity.Request;
 import com.amsysytem.enums.EmployeeRole;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
