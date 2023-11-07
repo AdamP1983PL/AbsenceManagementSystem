@@ -4,7 +4,8 @@ import com.amsysytem.dto.EmployeeDto;
 import com.amsysytem.entity.Employee;
 import com.amsysytem.mappers.EmployeeMapper;
 import com.amsysytem.repositories.EmployeeRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,25 +13,28 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService{
 
     private final EmployeeRepository employeeRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<EmployeeDto> getAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
         List<EmployeeDto> employeeDtos = employees.stream()
-                .map((employee) -> EmployeeMapper.mapToEmployeeDto(employee))
+                .map(EmployeeMapper::mapToEmployeeDto)
                 .collect(Collectors.toList());
 
         return employeeDtos;
-        // todo sorting asc/desc
+
     }
 
     @Override
     public void save(EmployeeDto employeeDto) {
-        employeeRepository.save(EmployeeMapper.mapToEmployee(employeeDto));
+        Employee employee = EmployeeMapper.mapToEmployee(employeeDto);
+        employee.setPassword(passwordEncoder.encode(employee.getPassword()));
+        employeeRepository.save(employee);
     }
 
     @Override

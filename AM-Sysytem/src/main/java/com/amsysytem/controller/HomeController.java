@@ -11,11 +11,6 @@ public class HomeController {
         return "login-page";
     }
 
-    @GetMapping("/logout")
-    public String logout() {
-        return "login";
-    }
-
     @GetMapping("/index")
     public String showIndex() {
         return "index";
@@ -37,3 +32,8 @@ public class HomeController {
     }
 
 }
+
+//    @GetMapping("/logout")
+//    public String logout() {
+//        return "login";
+//    }

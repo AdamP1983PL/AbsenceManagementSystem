@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public enum EmployeeRole {
-    ADMIN("Admin"),
-    USER("User"),
-    MANAGER("Manager");
+    ADMIN("ADMIN"),
+    USER("USER"),
+    MANAGER("MANAGER");
 
     private final String displayText;
 
