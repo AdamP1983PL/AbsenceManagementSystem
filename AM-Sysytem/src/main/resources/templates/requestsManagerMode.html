@@ -35,11 +35,28 @@
             <td th:text="*{lastName}"></td>
             <td th:text="*{firstName}"></td>
             <td th:text="*{email}"></td>
-            <td th:text="*{dateTimeCreated}"></td>
+            <td th:text="*{#temporals.format(dateTimeCreated, 'dd-MM-yyyy HH:mm')}"></td>
             <td th:text="*{startingDate}"></td>
             <td th:text="*{endingDate}"></td>
             <td th:text="*{daysCount}"></td>
-            <td th:text="*{dueDays}"></td>
+
+<!--            <td th:text="*{dueDays}"></td>-->
+            <td>
+                <div class="form-group mb-3">
+                    <p>
+                        <select name="SelectedNumber">
+                            <option value="">Select</option>
+                            <script>
+                                for (let i = 0; i <= 52; i++) {
+                                    document.write(`<option value="${i}">${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </p>
+                </div>
+            </td>
+
+
             <td th:text="*{status}"></td>
 <!--            <td>-->
 <!--                <a th:href="@{/listRequestsManagerMode/{requestDtoId}/edit(requestDtoId=${request.id})}"-->
@@ -49,21 +66,27 @@
 <!--                   onclick="if (!(confirm('Delete this request?'))) return false">Delete</a>-->
 <!--            </td>-->
 
-<!--            <td>-->
-<!--                <a th:unless="${requestsOne.status.name().equals('PENDING')}" class="btn btn-warning btn-sm"-->
-<!--                   th:href="@{updateStatus(id=${requestsOne.getId()}, status = 'PENDING')}">PENDING</a>-->
-<!--                <a th:unless="${requestsOne.status.name().equals('ACCEPTED')}" class="btn btn-success btn-sm"-->
-<!--                   th:href="@{/updateStatus(id=${requestsOne.getId()}, status = 'ACCEPTED')}">ACCEPTED</a>-->
-<!--                <a th:unless="${requestsOne.status.name().equals('REJECTED')}" class="btn btn-danger btn-sm"-->
-<!--                   th:href="@{/updateStatus(id=${requestsOne.getId()}, status = 'REJECTED')}">REJECTED</a>-->
-<!--            </td>-->
+            <td>
+                <a th:unless="${request.status.name().equals('PENDING')}" class="btn btn-sm btn-primary"
+                   th:href="@{/updateStatus(id=${request.getId()}, status = 'PENDING')}">PENDING</a>
+                <a th:unless="${request.status.name().equals('ACCEPTED')}" class="btn btn-sm btn-success"
+                   th:href="@{/updateStatus(id=${request.getId()}, status = 'ACCEPTED')}">ACCEPTED</a>
+                <a th:unless="${request.status.name().equals('REJECTED')}" class="btn btn-sm btn-warning"
+                   th:href="@{/updateStatus(id=${request.getId()}, status = 'REJECTED')}">REJECTED</a>
+            </td>
 
         </tr>
         </tbody>
     </table>
     <br>
     <div>
-        <a th:href="@{/manager}">Back to Manager Space</a>
+        <p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+<!--     todo   <p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>-->
+    </div>
+    <div>
+        <h6>
+            <a th:href="@{/manager}">Back to Manager Space</a>
+        </h6>
     </div>
 </div>
 </body>

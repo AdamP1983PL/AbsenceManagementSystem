@@ -35,7 +35,7 @@
             <td th:text="*{lastName}"></td>
             <td th:text="*{firstName}"></td>
             <td th:text="*{email}"></td>
-            <td th:text="*{dateTimeCreated}"></td>
+            <td th:text="*{#temporals.format(dateTimeCreated, 'dd-MM-yyyy HH:mm')}"></td>
             <td th:text="*{startingDate}"></td>
             <td th:text="*{endingDate}"></td>
             <td th:text="*{daysCount}"></td>

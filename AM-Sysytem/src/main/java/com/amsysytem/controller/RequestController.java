@@ -70,12 +70,11 @@ public class RequestController {
     }
 
     @GetMapping("/updateStatus")
-    public String updateStatus(@RequestParam Integer id, @RequestParam Status status) {
-//      todo  RequestDto existing = requestServiceImpl.getAllRequests().get(id-1); id-1 ??????????
-        RequestDto existing = requestServiceImpl.getAllRequests().get(id - 1);
-        existing.setStatus(status);
-        requestServiceImpl.updateStatus(existing);
-        return "redirect:/requests";
+    public String updateStatus(@RequestParam Long id, @RequestParam Status status) {
+        RequestDto requestDto = requestServiceImpl.getRequestDtoById(id);
+        requestDto.setStatus(status);
+        requestServiceImpl.updateStatus(requestDto);
+        return "redirect:/manager/listRequestsManagerMode";
     }
 
     @GetMapping("/{requestDtoId}/edit")
