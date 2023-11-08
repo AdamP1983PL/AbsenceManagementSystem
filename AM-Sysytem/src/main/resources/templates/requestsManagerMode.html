@@ -49,14 +49,14 @@
 <!--                   onclick="if (!(confirm('Delete this request?'))) return false">Delete</a>-->
 <!--            </td>-->
 
-            <td>
-                <a th:unless="${requestsOne.status.name().equals('PENDING')}" class="btn btn-warning btn-sm"
-                   th:href="@{updateStatus(id=${requestsOne.getId()}, status = 'PENDING')}">PENDING</a>
-                <a th:unless="${requestsOne.status.name().equals('ACCEPTED')}" class="btn btn-success btn-sm"
-                   th:href="@{/updateStatus(id=${requestsOne.getId()}, status = 'ACCEPTED')}">ACCEPTED</a>
-                <a th:unless="${requestsOne.status.name().equals('REJECTED')}" class="btn btn-danger btn-sm"
-                   th:href="@{/updateStatus(id=${requestsOne.getId()}, status = 'REJECTED')}">REJECTED</a>
-            </td>
+<!--            <td>-->
+<!--                <a th:unless="${requestsOne.status.name().equals('PENDING')}" class="btn btn-warning btn-sm"-->
+<!--                   th:href="@{updateStatus(id=${requestsOne.getId()}, status = 'PENDING')}">PENDING</a>-->
+<!--                <a th:unless="${requestsOne.status.name().equals('ACCEPTED')}" class="btn btn-success btn-sm"-->
+<!--                   th:href="@{/updateStatus(id=${requestsOne.getId()}, status = 'ACCEPTED')}">ACCEPTED</a>-->
+<!--                <a th:unless="${requestsOne.status.name().equals('REJECTED')}" class="btn btn-danger btn-sm"-->
+<!--                   th:href="@{/updateStatus(id=${requestsOne.getId()}, status = 'REJECTED')}">REJECTED</a>-->
+<!--            </td>-->
 
         </tr>
         </tbody>

@@ -3,7 +3,6 @@ package com.amsysytem.controller;
 import com.amsysytem.dto.RequestDto;
 import com.amsysytem.enums.Status;
 import com.amsysytem.service.RequestServiceImpl;
-
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -28,7 +27,7 @@ public class RequestController {
         return "requests";
     }
 
-    @GetMapping("/user/myRequestsList")
+    @GetMapping("user/myRequestsList")
     public String myRequestsList(Model model, Principal principal) {
         List<RequestDto> requestDtoList = requestServiceImpl.findRequestsByUserEmail(principal.getName());
         model.addAttribute("requestDtoList", requestDtoList);
@@ -39,17 +38,17 @@ public class RequestController {
     public String listRequestsAdminMode(Model model) {
         List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
         model.addAttribute("requestDtoList", requestDtoList);
-        return "requests-admin-mode";
+        return "requestsAdminMode";
     }
 
-    @GetMapping("manager/listRequestsManagerMode")
+    @GetMapping("/manager/listRequestsManagerMode")
     public String listRequestsManagerMode(Model model) {
         List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
         model.addAttribute("requestDtoList", requestDtoList);
-        return "requests-manager-mode";
+        return "requestsManagerMode";
     }
 
-    @GetMapping("/addNewRequest")
+    @GetMapping("/user/addNewRequest")
     public String addNewRequest(Model model) {
         RequestDto requestDtoToAdd = new RequestDto();
         model.addAttribute("requestDtoToAdd", requestDtoToAdd);
@@ -71,27 +70,27 @@ public class RequestController {
     }
 
     @GetMapping("/updateStatus")
-    public String updateStatus(@RequestParam Integer id, @RequestParam Status status){
+    public String updateStatus(@RequestParam Integer id, @RequestParam Status status) {
 //      todo  RequestDto existing = requestServiceImpl.getAllRequests().get(id-1); id-1 ??????????
-        RequestDto existing = requestServiceImpl.getAllRequests().get(id-1);
+        RequestDto existing = requestServiceImpl.getAllRequests().get(id - 1);
         existing.setStatus(status);
         requestServiceImpl.updateStatus(existing);
         return "redirect:/requests";
     }
 
     @GetMapping("/{requestDtoId}/edit")
-    public String editRequestAdminMode(@PathVariable("requestDtoId") Long requestDtoId, Model model){
+    public String editRequestAdminMode(@PathVariable("requestDtoId") Long requestDtoId, Model model) {
         RequestDto requestDto = requestServiceImpl.getRequestDtoById(requestDtoId);
         model.addAttribute("requestDto", requestDto);
         return "editRequestAdminSpace";
     }
 
-    @PostMapping("/{requestDtoId}")
+    @PostMapping("/admin/{requestDtoId}")
     public String updateRequest(@PathVariable("requestDtoId") Long requestDtoId,
                                 @Valid @ModelAttribute("requestDto") RequestDto requestDto,
                                 BindingResult result,
-                                Model model){
-        if(result.hasErrors()){
+                                Model model) {
+        if (result.hasErrors()) {
             model.addAttribute("requestDto", requestDto);
             return "editRequestAdminSpace";
         }
@@ -101,31 +100,35 @@ public class RequestController {
     }
 
     @GetMapping("listRequestsAdminMode/{requestDtoId}/delete")
-    public String deleteRequest(@PathVariable("requestDtoId") Long requestDtoId){
+    public String deleteRequest(@PathVariable("requestDtoId") Long requestDtoId) {
         requestServiceImpl.deleteRequest(requestDtoId);
         return "redirect:/requests-admin-mode";
-
     }
 
+    @GetMapping("/user/{requestDtoId}/edit")
+    public String editMyRequest(@PathVariable("requestDtoId") Long requestDtoId, Model model) {
+        RequestDto requestDto = requestServiceImpl.getRequestDtoById(requestDtoId);
+        model.addAttribute("requestDto", requestDto);
+        return "editMyRequest";
+    }
 
+    @PostMapping("user/{requestDtoId}")
+    public String updateMyRequest(@PathVariable("requestDtoId") Long requestDtoId,
+                                  @Valid @ModelAttribute("requestDtoId") RequestDto requestDto,
+                                  BindingResult result,
+                                  Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("requestDto", requestDto);
+            return "editMyRequest";
+        }
+        requestDto.setId(requestDtoId);
+        requestServiceImpl.updateRequest(requestDto);
+        return "redirect:/index";
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @GetMapping("/user/{requestDtoId}/delete")
+    public String deleteMyRequest(@PathVariable("requestDtoId") Long requestDtoId) {
+        requestServiceImpl.deleteRequest(requestDtoId);
+        return "redirect:/user/myRequestsList";
+    }
 }
