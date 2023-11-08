@@ -7,9 +7,10 @@
 <nav th:replace="~{/fragments/navigation :: nav}"></nav>
 <div th:replace="~{/fragments/userDetails :: userInfo}"></div>
 
+
 <div class="container">
     <div class="row">
-        <h3>Requests List - admin mode</h3>
+        <h3>My Requests list</h3>
     </div>
     <hr>
     <br>
@@ -35,29 +36,25 @@
             <td th:text="*{lastName}"></td>
             <td th:text="*{firstName}"></td>
             <td th:text="*{email}"></td>
-            <td th:text="*{dateTimeCreated}"></td>
+            <td th:text="*{#temporals.format(dateTimeCreated, 'dd-MM-yyyy HH:mm')}"></td>
             <td th:text="*{startingDate}"></td>
             <td th:text="*{endingDate}"></td>
             <td th:text="*{daysCount}"></td>
             <td th:text="*{dueDays}"></td>
             <td th:text="*{status}"></td>
-
-            <td>
-                <a th:href="@{/listRequestsAdminMode/{requestDtoId}/edit(requestDtoId=${request.id})}"
-                   class="btn btn-info btn-sm">Edit</a>
-                <!--    todo           edit request by admin not working-->
-
-
-                <a th:href="@{listRequestsAdminMode/{requestDtoId}/delete(requestDtoId=${request.id})}" class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('Delete this request?'))) return false">Delete</a>
-            </td>
+<!--            <td>-->
+<!--                <a th:unless="${request.status.name().equals('PENDING')}" class="btn btn-sm btn-primary"-->
+<!--                   th:href="@{/updateStatus(id=${request.getId()}, status = 'PENDING')}">PENDING</a>-->
+<!--                <a th:unless="${request.status.name().equals('ACCEPTED')}" class="btn btn-sm btn-success"-->
+<!--                   th:href="@{/updateStatus(id=${request.getId()}, status = 'ACCEPTED')}">ACCEPTED</a>-->
+<!--                <a th:unless="${request.status.name().equals('REJECTED')}" class="btn btn-sm btn-warning"-->
+<!--                   th:href="@{/updateStatus(id=${request.getId()}, status = 'REJECTED')}">REJECTED</a>-->
+<!--            </td>-->
         </tr>
-
         </tbody>
     </table>
-    <br>
     <div>
-        <a th:href="@{/admin}">Back to Admin Space</a>
+        <a th:href="@{/user}">Back to Home</a>
     </div>
 </div>
 </body>

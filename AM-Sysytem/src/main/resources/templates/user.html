@@ -5,7 +5,8 @@
 </head>
 <body>
 <nav th:replace="~{/fragments/navigation :: nav}"></nav>
-<br>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+
 <div class="container">
     <div class="text-center">
         <div>
@@ -14,25 +15,19 @@
         <hr>
         <br>
         <p>
-<!--        <div>-->
-<!--            <a th:href="@{/admin/employees}">-->
-<!--                <h3>All Employee List</h3>-->
-<!--            </a>-->
-<!--        </div>-->
-        </p>
-        <p>
-<!--        <div>-->
-<!--            <a th:href="@{/admin/newEmployee}">-->
-<!--                <h3>Add New Employee</h3>-->
-<!--            </a>-->
-<!--        </div>-->
+        <div>
+            <a th:href="@{/user/myRequestsList}">
+                <h3>My Requests List</h3>
+            </a>
+        </div>
         </p>
         <p>
         <div>
-            <a th:href="@{/user/listRequestsUserMode}">
-                <h3>All Requests List</h3>
+            <a th:href="@{/addNewRequest}">
+                <h3>Add New Request</h3>
             </a>
         </div>
+
         </p>
         <br>
         <p>

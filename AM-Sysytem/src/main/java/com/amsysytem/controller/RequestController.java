@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -19,11 +20,19 @@ public class RequestController {
 
     public final RequestServiceImpl requestServiceImpl;
 
+
     @GetMapping("/requests")
     public String listRequest(Model model) {
         List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
         model.addAttribute("requestDtoList", requestDtoList);
         return "requests";
+    }
+
+    @GetMapping("/user/myRequestsList")
+    public String myRequestsList(Model model, Principal principal) {
+        List<RequestDto> requestDtoList = requestServiceImpl.findRequestsByUserEmail(principal.getName());
+        model.addAttribute("requestDtoList", requestDtoList);
+        return "myRequestsList";
     }
 
     @GetMapping("admin/listRequestsAdminMode")
@@ -50,15 +59,15 @@ public class RequestController {
     @PostMapping("/saveNewRequest")
     public String saveNewRequest(@Valid @ModelAttribute("requestDtoToAdd") RequestDto requestDto,
                                  BindingResult result,
-                                 Model model) {
-        requestDto.setStatus(Status.PENDING);
+                                 Model model,
+                                 Principal principal) {
         if (result.hasErrors()) {
             model.addAttribute("requestDto", requestDto);
             return "request-form";
         }
 
-        requestServiceImpl.save(requestDto);
-        return "redirect:/requests";
+        requestServiceImpl.save(requestDto, principal.getName());
+        return "redirect:/user/myRequestsList";
     }
 
     @GetMapping("/updateStatus")
@@ -66,7 +75,7 @@ public class RequestController {
 //      todo  RequestDto existing = requestServiceImpl.getAllRequests().get(id-1); id-1 ??????????
         RequestDto existing = requestServiceImpl.getAllRequests().get(id-1);
         existing.setStatus(status);
-        requestServiceImpl.save(existing);
+        requestServiceImpl.updateStatus(existing);
         return "redirect:/requests";
     }
 

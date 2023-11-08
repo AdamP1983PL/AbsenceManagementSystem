@@ -1,12 +1,15 @@
 package com.amsysytem.service;
 
+import com.amsysytem.dto.EmployeeDto;
 import com.amsysytem.dto.RequestDto;
 import com.amsysytem.entity.Request;
+import com.amsysytem.enums.Status;
 import com.amsysytem.mappers.RequestMapper;
 import com.amsysytem.repositories.RequestRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,6 +19,8 @@ import java.util.stream.Collectors;
 public class RequestServiceImpl implements RequestService {
 
     public final RequestRepository requestRepository;
+
+    public final EmployeeServiceImpl employeeServiceImpl;
 
     @Override
     public List<RequestDto> getAllRequests() {
@@ -36,7 +41,17 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public void save(RequestDto requestDto) {
+    public void save(RequestDto requestDto, String email) {
+        EmployeeDto employee = employeeServiceImpl.findByEmail(email);
+        requestDto.setLastName(employee.getLastName());
+        requestDto.setFirstName(employee.getFirstName());
+        requestDto.setEmail(employee.getEmail());
+        requestDto.setStatus(Status.PENDING);
+        requestRepository.save(RequestMapper.mapToRequest(requestDto));
+    }
+
+    @Override
+    public void updateStatus(RequestDto requestDto) {
         requestRepository.save(RequestMapper.mapToRequest(requestDto));
     }
 
@@ -61,6 +76,13 @@ public class RequestServiceImpl implements RequestService {
             throw new RuntimeException("There is no request for id: " + requestDtoId);
         }
         return RequestMapper.mapToRequestDto(request);
+    }
+
+    public List<RequestDto> findRequestsByUserEmail(String name) {
+        List<Request> requests = requestRepository.findAllByEmail(name);
+        return requests.stream()
+                .map(RequestMapper::mapToRequestDto)
+                .toList();
     }
 }
 

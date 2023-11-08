@@ -13,7 +13,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((requests) -> requests
+                .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").hasAnyAuthority("ADMIN", "MANAGER", "USER")
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/manager/**").hasAuthority("MANAGER")
@@ -24,7 +24,10 @@ public class WebSecurityConfig {
                         .loginPage("/login")
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll());
+                .logout(logout -> logout.permitAll()
+                )
+                .exceptionHandling(requests ->
+                        requests.accessDeniedPage("/access-denied"));
 
         return http.build();
     }

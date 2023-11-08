@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+<br>
+<div class="container">
+  <div class="text-center">
+    <div>
+      <h3>Access Denied - You are not authorised to access this resource.</h3>
+    </div>
+    <hr>
+    <br>
+    <div>
+      <a th:href="@{/index}">
+        <h4>Back to Home Page</h4>
+      </a>
+    </div>
+    <br>
+  </div>
+</div>
+</body>
+</html>

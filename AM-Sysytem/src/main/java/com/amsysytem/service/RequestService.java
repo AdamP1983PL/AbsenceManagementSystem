@@ -12,7 +12,7 @@ public interface RequestService {
 
 //TODO  List<RequestDto> findRequestsByStatus(Status status); ???
 
-    void save(RequestDto requestDto);
+    void save(RequestDto requestDto, String email);
 
     void updateRequest(RequestDto requestDto);
 
@@ -21,5 +21,7 @@ public interface RequestService {
     RequestDto getRequestDtoById(Long requestDtoId);
 
     List<RequestDto> findRequestsByUserId(Long id);
+
+    void updateStatus(RequestDto requestDto);
 
 }

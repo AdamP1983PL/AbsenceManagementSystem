@@ -59,4 +59,10 @@ public class EmployeeServiceImpl implements EmployeeService{
     public void deleteEmployee(Long employeeDtoId) {
         employeeRepository.deleteById(employeeDtoId);
     }
+
+    @Override
+    public EmployeeDto findByEmail(String email) {
+        return EmployeeMapper.mapToEmployeeDto(employeeRepository.findByEmail(email));
+
+    }
 }

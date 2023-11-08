@@ -23,14 +23,14 @@ public class RequestDto {
 
     private Long id;
 
-    @NotEmpty(message = "Last Name should not be empty")
+//    @NotEmpty(message = "Last Name should not be empty")
     private String lastName;
 
-    @NotEmpty(message = "First Name should not be empty")
+//    @NotEmpty(message = "First Name should not be empty")
     private String firstName;
 
-    @NotEmpty(message = "Email should not be empty")
-    @Email
+//    @NotEmpty(message = "Email should not be empty")
+//    @Email
     private String email;
 
     private LocalDateTime dateTimeCreated;

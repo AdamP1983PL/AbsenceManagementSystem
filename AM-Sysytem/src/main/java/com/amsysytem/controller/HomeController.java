@@ -31,9 +31,14 @@ public class HomeController {
         return "manager";
     }
 
+    @GetMapping("/access-denied")
+    public String getAccessDeniedPage() {
+        return "access-denied";
+    }
+
 }
 
 //    @GetMapping("/logout")
 //    public String logout() {
-//        return "login";
+//        return "logout";
 //    }
