@@ -45,13 +45,16 @@
                     <p>Role:
                         <span th:text="${employeeDetailsDto.employeeRole}"></span>
                     </p>
-                    <p>Due Days:
-                        <span th:text="${employeeDetailsDto.dueDays}"></span>
-                    </p>
+<!--                    <p>Due Days:-->
+<!--                        <span th:text="${employeeDetailsDto.getDueDays()}"></span>-->
+<!--                    </p>-->
                 </h5>
             </form>
             <div class="mb-3">
-                <a th:href="@{/admin/employees}">Back to List of Employees</a>
+                <h5>
+                    <a th:href="@{/admin/employees}">Back to List of Employees</a>
+                </h5>
+
             </div>
         </div>
     </div>

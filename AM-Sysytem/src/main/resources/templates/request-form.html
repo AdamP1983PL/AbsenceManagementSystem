@@ -51,13 +51,29 @@
                     <p th:if="${#fields.hasErrors('endingDate')}" class="text-danger" th:errors="*{endingDate}"></p>
                 </div>
 
+                <div class="form-group mb-3">
+                    <label class="form-label">Days Count</label>
+                    <input class="form-control" th:field="*{daysCount}"
+                           type="number" id="daysCount" placeholder="Enter Days Count">
+                    <p th:if="${#fields.hasErrors('daysCount')}" class="text-danger" th:errors="*{daysCount}"></p>
+                </div>
+
                 <div class="mb-3">
                     <button class="btn btn-primary btn-sm" type="submit">Save New Request</button>
                 </div>
 
             </form>
             <div class="mb-3">
-                <a th:href="@{/user}">Back to Home</a>
+                <h5>
+                    <a th:href="@{/user}">Back to Home</a>
+                </h5>
+            </div>
+            <div>
+                <h6>
+                    * Days Count - Count working days. Your Manager is going to check/correct it.
+                    <br>
+                    * If You are not sure how to count working days - select 0.
+                </h6>
             </div>
         </div>
     </div>

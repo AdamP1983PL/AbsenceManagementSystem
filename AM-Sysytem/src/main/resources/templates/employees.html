@@ -6,12 +6,11 @@
 <body>
 <nav th:replace="~{/fragments/navigation :: nav}"></nav>
 <div th:replace="~{/fragments/userDetails :: userInfo}"></div>
-
-
 <div class="container">
     <div class="row">
-        <h3>List of all Employees (admin-mode)</h3>
+        <h3>List of Employees (Admin)</h3>
     </div>
+    <hr>
     <br>
     <table class="table table-striped table-hover table-bordered table-primary">
         <thead>
@@ -20,20 +19,10 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>Email</th>
-<!--            <th>Password</th>-->
-            <th>Phone Number</th>
-            <th>Employee Role</th>
-            <th>Due Days</th>
-            <th>
-                <div class="text-center">
-                    Show Details
-                </div>
-            </th>
-            <th>
-                <div class="text-center">
-                    Action
-                </div>
-            </th>
+            <th class="text-center">Phone Number</th>
+            <th class="text-center">Employee Role</th>
+            <th class="text-center">Show Details</th>
+            <th class="text-center">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -42,18 +31,14 @@
             <td th:text="*{lastName}"></td>
             <td th:text="*{firstName}"></td>
             <td th:text="*{email}"></td>
-<!--            <td th:text="*{password}"></td>-->
-            <td th:text="*{phoneNumber}"></td>
-            <td th:text="*{employeeRole}"></td>
-            <td th:text="*{dueDays}"></td>
-            <td>
-                <div class="text-center">
-                    <a th:href="@{{employeeDtoId}/details(employeeDtoId=${employee.id})}"
-                       class="btn btn-primary btn-sm">Details</a>
-                </div>
+            <td class="text-center" th:text="*{phoneNumber}"></td>
+            <td class="text-center" th:text="*{employeeRole}"></td>
+            <td class="text-center">
+                <a th:href="@{{employeeDtoId}/details(employeeDtoId=${employee.id})}"
+                   class="btn btn-primary btn-sm">Details</a>
             </td>
-            <td>
-                <div class="text-center">
+            <td class="text-center">
+                <div th:unless="${employee.getEmployeeRole().displayText.equals('ADMIN')}">
                     <a th:href="@{{employeeDtoId}/edit(employeeDtoId=${employee.id})}"
                        class="btn btn-primary btn-sm">Edit</a>
                     <a th:href="@{{employeeDtoId}/delete(employeeDtoId=${employee.id})}"
@@ -64,15 +49,26 @@
         </tr>
         </tbody>
     </table>
-    <hr>
     <p>
     <div>
-        <a th:href="@{/admin/newEmployee}">Add New Employee</a>
+        <h5>
+            <a th:href="@{/admin/newEmployee}">Add New Employee</a>
+        </h5>
     </div>
     </p>
     <p>
     <div>
-        <a th:href="@{/admin}">Back to Admin Space</a>
+        <h5>
+            <a th:href="@{/admin}">Back to Admin Space</a>
+        </h5>
+    </div>
+    <hr>
+    <div>
+        <h6>
+            * You can not Edit or Delete admin.
+            <br>
+            * Delete is final. You can not undo it.
+        </h6>
     </div>
     </p>
 </div>

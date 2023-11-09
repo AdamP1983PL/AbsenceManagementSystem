@@ -15,7 +15,7 @@ public class RequestMapper {
                 request.getStartingDate(),
                 request.getEndingDate(),
                 request.getDaysCount(),
-                request.getDueDays(),
+//                request.getDueDays(),
                 request.getStatus(),
                 request.getEmployee()
         );
@@ -31,7 +31,7 @@ public class RequestMapper {
                 requestDto.getStartingDate(),
                 requestDto.getEndingDate(),
                 requestDto.getDaysCount(),
-                requestDto.getDueDays(),
+//                requestDto.getDueDays(),
                 requestDto.getStatus(),
                 requestDto.getEmployee()
         );

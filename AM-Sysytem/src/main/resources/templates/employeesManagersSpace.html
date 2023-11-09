@@ -6,11 +6,11 @@
 <body>
 <nav th:replace="~{/fragments/navigation :: nav}"></nav>
 <div th:replace="~{/fragments/userDetails :: userInfo}"></div>
-
 <div class="container">
     <div class="row">
-        <h3>List of Employees (manager-mode)</h3>
+        <h3>List of Employees (Manager)</h3>
     </div>
+    <hr>
     <br>
     <table class="table table-striped table-hover table-bordered table-primary">
         <thead>
@@ -19,14 +19,10 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>Email</th>
-            <th>Phone Number</th>
-            <th>Employee Role</th>
-            <th>Due Days</th>
-            <th>
-                <div class="text-center">
-                    Requests
-                </div>
-            </th>
+            <th class="text-center">Phone Number</th>
+            <th class="text-center">Employee Role</th>
+            <th class="text-center">Due Days</th>
+            <th class="text-center">Requests</th>
             <th>
                 <div class="text-center">
                     Show Details
@@ -40,29 +36,26 @@
             <td th:text="*{lastName}"></td>
             <td th:text="*{firstName}"></td>
             <td th:text="*{email}"></td>
-            <td th:text="*{phoneNumber}"></td>
-            <td th:text="*{employeeRole}"></td>
-            <td th:text="*{dueDays}"></td>
-            <td>
-                <div class="text-center">
-                    <a th:href="@{/manager/{employeeDtoId}/singleList(employeeDtoId=${employee.id})}"
-                    class="btn btn-primary btn-sm">Requests</a>
-                </div>
+            <td class="text-center" th:text="*{phoneNumber}"></td>
+            <td class="text-center" th:text="*{employeeRole}"></td>
+            <td class="text-center" th:text="*{dueDays}"></td>
+            <td class="text-center">
+                <a th:href="@{/manager/{employeeDtoId}/singleList(employeeDtoId=${employee.id})}"
+                   class="btn btn-primary btn-sm">Requests</a>
             </td>
-            <td>
-                <div class="text-center">
-                    <a th:href="@{/manager/{employeeDtoId}/detailsManagersSpace(employeeDtoId=${employee.id})}"
-                       class="btn btn-primary btn-sm">Details</a>
-                </div>
+            <td class="text-center">
+                <a th:href="@{/manager/{employeeDtoId}/detailsManagersSpace(employeeDtoId=${employee.id})}"
+                   class="btn btn-primary btn-sm">Details</a>
             </td>
         </tr>
         </tbody>
     </table>
     <div>
-        <h6>
+        <h5>
             <a th:href="@{/manager}">Back to Manager Space</a>
-        </h6>
+        </h5>
     </div>
+    <hr>
 </div>
 </body>
 </html>

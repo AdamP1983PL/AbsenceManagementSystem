@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,6 +36,7 @@ public class RequestDto {
 //    @Email
     private String email;
 
+    @CreationTimestamp
     private LocalDateTime dateTimeCreated;
 
     @NotNull(message = "Starting date should not be empty")
@@ -45,9 +47,10 @@ public class RequestDto {
     @Future (message = "Starting date should be in the future")
     private LocalDate endingDate;
 
+    @NotNull(message = "Count working days, Your Manager is going to check it.")
     private int daysCount;
 
-    private int dueDays;
+//    private int dueDays;
 
     @Enumerated(EnumType.STRING)
     private Status status;

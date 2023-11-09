@@ -58,22 +58,26 @@
                         </select>
                     </p>
                 </div>
-                <div class="form-group mb-3">
-                    <label class="form-label">Due Days (0 - 52)</label>
-                    <input class="form-control" th:field="*{dueDays}"
-                           type="number" id="dueDays" name="dueDays" placeholder="Enter Due Days">
-                    <p th:if="${#fields.hasErrors('dueDays')}" class="text-danger" th:errors="*{dueDays}"></p>
-                </div>
+<!--                <div class="form-group mb-3">-->
+<!--                    <label class="form-label">Due Days (0 - 52)</label>-->
+<!--                    <input class="form-control" th:field="*{dueDays}"-->
+<!--                           type="number" id="dueDays" name="dueDays" placeholder="Enter Due Days">-->
+<!--                    <p th:if="${#fields.hasErrors('dueDays')}" class="text-danger" th:errors="*{dueDays}"></p>-->
+<!--                </div>-->
                 <div class="mb-3">
                     <button class="btn btn-primary" type="submit">Save Employee</button>
                 </div>
 
             </form>
             <div class="mb-3">
-                <a th:href="@{/admin/employees}">Proceed to Employee List</a>
+                <h5>
+                    <a th:href="@{/admin/employees}">Proceed to Employee List</a>
+                </h5>
             </div>
             <div>
-                <a th:href="@{/admin}">Back to Admin Space</a>
+                <h5>
+                    <a th:href="@{/admin}">Back to Admin Space</a>
+                </h5>
             </div>
         </div>
     </div>
