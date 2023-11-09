@@ -32,7 +32,7 @@ public class Request {
     private String email;
 
     @CreationTimestamp
-    @Column(name = "created", nullable = false)
+    @Column(name = "created")
     private LocalDateTime dateTimeCreated;
 
     @Column(name = "starting_date", nullable = false)

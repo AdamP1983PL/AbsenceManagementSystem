@@ -77,14 +77,14 @@ public class RequestController {
         return "redirect:/manager/listRequestsManagerMode";
     }
 
-    @GetMapping("/{requestDtoId}/edit")
+    @GetMapping("/listRequestsAdminMode/{requestDtoId}/edit")
     public String editRequestAdminMode(@PathVariable("requestDtoId") Long requestDtoId, Model model) {
         RequestDto requestDto = requestServiceImpl.getRequestDtoById(requestDtoId);
         model.addAttribute("requestDto", requestDto);
         return "editRequestAdminSpace";
     }
 
-    @PostMapping("/admin/{requestDtoId}")
+    @PostMapping("/admin/updateRequest/{requestDtoId}")
     public String updateRequest(@PathVariable("requestDtoId") Long requestDtoId,
                                 @Valid @ModelAttribute("requestDto") RequestDto requestDto,
                                 BindingResult result,
@@ -95,13 +95,13 @@ public class RequestController {
         }
         requestDto.setId(requestDtoId);
         requestServiceImpl.updateRequest(requestDto);
-        return "redirect:/requests";
+        return "redirect:/admin/listRequestsAdminMode";
     }
 
-    @GetMapping("listRequestsAdminMode/{requestDtoId}/delete")
+    @GetMapping("/admin/listRequestsAdminMode/{requestDtoId}/delete")
     public String deleteRequest(@PathVariable("requestDtoId") Long requestDtoId) {
         requestServiceImpl.deleteRequest(requestDtoId);
-        return "redirect:/requests-admin-mode";
+        return "redirect:/admin/listRequestsAdminMode";
     }
 
     @GetMapping("/user/{requestDtoId}/edit")
@@ -131,3 +131,14 @@ public class RequestController {
         return "redirect:/user/myRequestsList";
     }
 }
+
+
+
+
+
+
+
+
+
+
+

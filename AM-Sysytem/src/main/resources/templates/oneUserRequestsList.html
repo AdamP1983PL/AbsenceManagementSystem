@@ -38,7 +38,7 @@
             <td th:text="*{#temporals.format(dateTimeCreated, 'dd-MM-yyyy HH:mm')}"></td>
             <td th:text="*{startingDate}"></td>
             <td th:text="*{endingDate}"></td>
-<!--            <td th:text="*{daysCount}"></td>-->
+            <!--            <td th:text="*{daysCount}"></td>-->
             <td>
                 <div class="form-group mb-3">
                     <p>
@@ -53,7 +53,7 @@
                     </p>
                 </div>
             </td>
-<!--            <td th:text="*{dueDays}"></td>-->
+            <!--            <td th:text="*{dueDays}"></td>-->
             <td>
                 <div class="form-group mb-3">
                     <p>
@@ -71,13 +71,13 @@
 
 
             <td th:text="*{status}"></td>
-<!--            <td>-->
-<!--                <a th:href="@{/listRequestsManagerMode/{requestDtoId}/edit(requestDtoId=${request.id})}"-->
-<!--                   class="btn btn-info btn-sm">Edit</a>-->
-<!--                &lt;!&ndash;    todo           edit request by admin not working&ndash;&gt;-->
-<!--                <a th:href="@{listRequestsAdminMode/{requestDtoId}/delete(requestDtoId=${request.id})}" class="btn btn-danger btn-sm"-->
-<!--                   onclick="if (!(confirm('Delete this request?'))) return false">Delete</a>-->
-<!--            </td>-->
+            <!--            <td>-->
+            <!--                <a th:href="@{/listRequestsManagerMode/{requestDtoId}/edit(requestDtoId=${request.id})}"-->
+            <!--                   class="btn btn-info btn-sm">Edit</a>-->
+            <!--                &lt;!&ndash;    todo           edit request by admin not working&ndash;&gt;-->
+            <!--                <a th:href="@{listRequestsAdminMode/{requestDtoId}/delete(requestDtoId=${request.id})}" class="btn btn-danger btn-sm"-->
+            <!--                   onclick="if (!(confirm('Delete this request?'))) return false">Delete</a>-->
+            <!--            </td>-->
 
             <td>
                 <a th:unless="${request.status.name().equals('PENDING')}" class="btn btn-sm btn-primary"
@@ -94,7 +94,12 @@
     <br>
     <div>
         <p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
-<!--     todo   <p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>-->
+        <!--     todo   <p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>-->
+    </div>
+    <div>
+        <h6>
+            <a th:href="@{/manager/managersList}">Back to Employees List</a>
+        </h6>
     </div>
     <div>
         <h6>

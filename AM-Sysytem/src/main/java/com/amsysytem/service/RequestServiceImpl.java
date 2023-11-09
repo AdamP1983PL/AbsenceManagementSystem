@@ -2,6 +2,7 @@ package com.amsysytem.service;
 
 import com.amsysytem.dto.EmployeeDto;
 import com.amsysytem.dto.RequestDto;
+import com.amsysytem.entity.Employee;
 import com.amsysytem.entity.Request;
 import com.amsysytem.enums.Status;
 import com.amsysytem.mappers.RequestMapper;
@@ -18,7 +19,6 @@ import java.util.stream.Collectors;
 public class RequestServiceImpl implements RequestService {
 
     public final RequestRepository requestRepository;
-
     public final EmployeeServiceImpl employeeServiceImpl;
 
     @Override
@@ -83,6 +83,14 @@ public class RequestServiceImpl implements RequestService {
                 .map(RequestMapper::mapToRequestDto)
                 .toList();
     }
+
+    public List<RequestDto> findRequestsByEmployeeId(Long employeeId) {
+        List<Request> requests = requestRepository.findAllByEmployeeId(employeeId);
+        return requests.stream()
+                .map(RequestMapper::mapToRequestDto)
+                .toList();
+    }
+
 
 }
 

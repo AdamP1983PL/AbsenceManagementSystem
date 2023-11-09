@@ -5,8 +5,10 @@ import com.amsysytem.enums.Status;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.validation.constraints.Email;
+
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,10 +37,12 @@ public class RequestDto {
 
     private LocalDateTime dateTimeCreated;
 
-//    @NotEmpty(message = "Starting date should not be empty")
+    @NotNull(message = "Starting date should not be empty")
+    @Future (message = "Starting date should be in the future")
     private LocalDate startingDate;
 
-//    @NotEmpty(message = "Ending date should not be empty")
+    @NotNull(message = "Starting date should not be empty")
+    @Future (message = "Starting date should be in the future")
     private LocalDate endingDate;
 
     private int daysCount;
