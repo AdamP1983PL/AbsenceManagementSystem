@@ -1,0 +1,116 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <div th:replace="~{/fragments/head-content :: head-content}"></div>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav th:replace="~{/fragments/navigation :: nav}"></nav>-->
+<!--<div th:replace="~{/fragments/userDetails :: userInfo}"></div>-->
+<!--<div class="container row col-md-6 offset-md-3">-->
+<!--    <div class="card">-->
+<!--        <div class="card-header">-->
+<!--            <h3>Edit Days Count</h3>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+
+<!--            <form action="#" method="post" role="form"-->
+<!--                  th:action="@{/manager/{requestDtoId}(requestDtoId=${requestDto.id})}"-->
+<!--                  th:object="${requestDto}">-->
+
+<!--                <div class="">-->
+<!--                    <input class="form-control" th:field="*{id}"-->
+<!--                           type="hidden" id="id" name="id">-->
+<!--                </div>-->
+
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">Last Name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{lastName}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="text" id="lastName" placeholder="Enter Last Name">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">First Name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{firstName}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="text" id="firstName" placeholder="Enter First Name">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">Email</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{email}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="email" id="email" placeholder="Enter Email">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+
+<!--                <div class="form-group mb-3">-->
+<!--                    <label class="form-label">Days Count</label>-->
+<!--                    <input class="form-control" th:field="*{daysCount}"-->
+<!--                           type="text" id="daysCount" placeholder="Enter Days Count">-->
+<!--                    <p th:if="${#fields.hasErrors('daysCount')}" class="text-danger" th:errors="*{daysCount}"></p>-->
+<!--                </div>-->
+
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">Starting Date</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{startingDate}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="date" id="startingDate" placeholder="Enter Starting Date">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('startingDate')}" class="text-danger" th:errors="*{startingDate}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">Ending Date</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{endingDate}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="date" id="endingDate" placeholder="Enter Ending Date">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('endingDate')}" class="text-danger" th:errors="*{endingDate}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+
+<!--                <div class="mb-3">-->
+<!--                    <button class="btn btn-primary btn-sm" type="submit">Save</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--            <div class="mb-3">-->
+<!--                <h5>-->
+<!--                    <a th:href="@{/manager/listRequestsManagerMode}">Back to Requests List</a>-->
+<!--                </h5>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">Last Name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{lastName}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="text" id="lastName" placeholder="Enter Last Name">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">First Name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{firstName}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="text" id="firstName" placeholder="Enter First Name">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">Email</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{email}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="email" id="email" placeholder="Enter Email">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">Starting Date</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{startingDate}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="date" id="startingDate" placeholder="Enter Starting Date">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('startingDate')}" class="text-danger" th:errors="*{startingDate}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="form-group mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label class="form-label">Ending Date</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="form-control" th:field="*{endingDate}"&ndash;&gt;-->
+<!--&lt;!&ndash;                           type="date" id="endingDate" placeholder="Enter Ending Date">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:if="${#fields.hasErrors('endingDate')}" class="text-danger" th:errors="*{endingDate}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->

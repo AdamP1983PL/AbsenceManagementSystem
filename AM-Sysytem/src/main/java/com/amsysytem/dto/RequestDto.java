@@ -7,7 +7,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotEmpty;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -49,8 +49,6 @@ public class RequestDto {
 
     @NotNull(message = "Count working days, Your Manager is going to check it.")
     private int daysCount;
-
-//    private int dueDays;
 
     @Enumerated(EnumType.STRING)
     private Status status;
