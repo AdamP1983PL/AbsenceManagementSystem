@@ -84,6 +84,13 @@ public class RequestController {
         return "editRequestAdminSpace";
     }
 
+    @GetMapping("/listRequestsManagerMode/{requestDtoId}/edit")
+    public String editRequestByManager(@PathVariable("requestDtoId") Long requestDtoId, Model model) {
+        RequestDto requestDto = requestServiceImpl.getRequestDtoById(requestDtoId);
+        model.addAttribute("requestDto", requestDto);
+        return "editRequestByManager";
+    }
+
     @PostMapping("/admin/updateRequest/{requestDtoId}")
     public String updateRequest(@PathVariable("requestDtoId") Long requestDtoId,
                                 @Valid @ModelAttribute("requestDto") RequestDto requestDto,
@@ -96,6 +103,20 @@ public class RequestController {
         requestDto.setId(requestDtoId);
         requestServiceImpl.updateRequest(requestDto);
         return "redirect:/admin/listRequestsAdminMode";
+    }
+
+    @PostMapping("/manager/updateRequest/{requestDtoId}")
+    public String updateRequestByManager(@PathVariable("requestDtoId") Long requestDtoId,
+                                @Valid @ModelAttribute("requestDto") RequestDto requestDto,
+                                BindingResult result,
+                                Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("requestDto", requestDto);
+            return "editRequestByManager";
+        }
+        requestDto.setId(requestDtoId);
+        requestServiceImpl.updateRequestByManager(requestDto);
+        return "redirect:/manager/listRequestsManagerMode";
     }
 
     @GetMapping("/admin/listRequestsAdminMode/{requestDtoId}/delete")

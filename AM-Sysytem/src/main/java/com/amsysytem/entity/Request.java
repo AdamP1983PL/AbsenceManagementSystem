@@ -44,7 +44,7 @@ public class Request {
     @Column(name = "days_count")
     private int daysCount;
 
-//    @Column(name = "due_days")
+//    @Column(name = "remaining_days")
 //    private int dueDays;
 
     @Column(columnDefinition = "ENUM('ACCEPTED', 'REJECTED', 'PENDING')", name = "status")

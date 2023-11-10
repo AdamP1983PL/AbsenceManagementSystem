@@ -16,6 +16,8 @@ public interface RequestService {
 
     void updateRequest(RequestDto requestDto);
 
+    void updateRequestByManager(RequestDto requestDto);
+
     void deleteRequest(Long id);
 
     RequestDto getRequestDtoById(Long requestDtoId);

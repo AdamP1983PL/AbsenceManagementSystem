@@ -69,6 +69,21 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public void updateRequestByManager(RequestDto requestDto) {
+//         todo here
+        Request request = requestRepository.findById(requestDto.getId())
+                .orElseThrow(() -> new EntityNotFoundException("There is no Request for id: " + requestDto.getId()));
+        requestDto.setFirstName(requestDto.getFirstName());
+        requestDto.setLastName(requestDto.getLastName());
+        requestDto.setEmail(request.getEmail());
+        requestDto.setDateTimeCreated(request.getDateTimeCreated());
+        requestDto.setStartingDate(request.getStartingDate());
+        requestDto.setEndingDate(request.getEndingDate());
+        requestDto.setStatus(requestDto.getStatus());
+        requestRepository.save(RequestMapper.mapToRequest(requestDto));
+    }
+
+    @Override
     public void deleteRequest(Long id) {
         requestRepository.deleteById(id);
     }
