@@ -37,6 +37,7 @@ public class RequestDto {
     private String email;
 
     @CreationTimestamp
+//    @NotNull(message = "Date-Time Updated should not be empty")
     private LocalDateTime dateTimeCreated;
 
     @NotNull(message = "Starting date should not be empty")

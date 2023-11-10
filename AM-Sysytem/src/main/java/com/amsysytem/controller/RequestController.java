@@ -130,6 +130,11 @@ public class RequestController {
         requestServiceImpl.deleteRequest(requestDtoId);
         return "redirect:/user/myRequestsList";
     }
+
+    @ModelAttribute("Status")
+    public Status[] selectStatus() {
+        return Status.values();
+    }
 }
 
 

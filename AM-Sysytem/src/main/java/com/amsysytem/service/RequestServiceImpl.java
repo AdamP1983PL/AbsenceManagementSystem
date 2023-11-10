@@ -7,7 +7,9 @@ import com.amsysytem.entity.Request;
 import com.amsysytem.enums.Status;
 import com.amsysytem.mappers.RequestMapper;
 import com.amsysytem.repositories.RequestRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,6 +58,13 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public void updateRequest(RequestDto requestDto) {
+//         todo here
+        Request request = requestRepository.findById(requestDto.getId())
+                        .orElseThrow(() -> new EntityNotFoundException("There is no Request for id: " + requestDto.getId()));
+        requestDto.setFirstName(requestDto.getFirstName());
+        requestDto.setLastName(requestDto.getLastName());
+        requestDto.setEmail(request.getEmail());
+        requestDto.setStatus(Status.PENDING);
         requestRepository.save(RequestMapper.mapToRequest(requestDto));
     }
 
