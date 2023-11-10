@@ -3,6 +3,7 @@ package com.amsysytem.dto;
 import com.amsysytem.entity.Request;
 import com.amsysytem.enums.EmployeeRole;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -41,9 +42,13 @@ public class EmployeeDto {
 
     private EmployeeRole employeeRole;
 
+//    @Min(0)
+//    @Max(52)
+//    private int dueDays;
+
     @Min(0)
     @Max(52)
-    private int dueDays;
+    private int remainingDays;
 
     private List<Request> request = new ArrayList<>();
 }

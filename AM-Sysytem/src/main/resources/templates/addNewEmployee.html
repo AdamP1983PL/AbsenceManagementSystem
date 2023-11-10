@@ -58,12 +58,12 @@
                         </select>
                     </p>
                 </div>
-<!--                <div class="form-group mb-3">-->
-<!--                    <label class="form-label">Due Days (0 - 52)</label>-->
-<!--                    <input class="form-control" th:field="*{dueDays}"-->
-<!--                           type="number" id="dueDays" name="dueDays" placeholder="Enter Due Days">-->
-<!--                    <p th:if="${#fields.hasErrors('dueDays')}" class="text-danger" th:errors="*{dueDays}"></p>-->
-<!--                </div>-->
+                <div class="form-group mb-3">
+                    <label class="form-label">Due Days (0 - 52)</label>
+                    <input class="form-control" th:field="*{remainingDays}"
+                           type="number" id="remainingDays" name="remainingDays" placeholder="Enter Remaining Days">
+                    <p th:if="${#fields.hasErrors('remainingDays')}" class="text-danger" th:errors="*{remainingDays}"></p>
+                </div>
                 <div class="mb-3">
                     <button class="btn btn-primary" type="submit">Save Employee</button>
                 </div>

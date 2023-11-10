@@ -21,7 +21,7 @@
             <th>Email</th>
             <th class="text-center">Phone Number</th>
             <th class="text-center">Employee Role</th>
-            <th class="text-center">Due Days</th>
+            <th class="text-center">Remaining Days</th>
             <th class="text-center">Requests</th>
             <th>
                 <div class="text-center">
@@ -38,7 +38,7 @@
             <td th:text="*{email}"></td>
             <td class="text-center" th:text="*{phoneNumber}"></td>
             <td class="text-center" th:text="*{employeeRole}"></td>
-            <td class="text-center" th:text="*{dueDays}"></td>
+            <td class="text-center" th:text="*{remainingDays}"></td>
             <td class="text-center">
                 <a th:href="@{/manager/{employeeDtoId}/singleList(employeeDtoId=${employee.id})}"
                    class="btn btn-primary btn-sm">Requests</a>

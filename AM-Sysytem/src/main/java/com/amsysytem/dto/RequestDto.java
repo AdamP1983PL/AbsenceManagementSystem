@@ -3,6 +3,7 @@ package com.amsysytem.dto;
 import com.amsysytem.entity.Employee;
 import com.amsysytem.enums.Status;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
@@ -50,6 +51,9 @@ public class RequestDto {
 
     @NotNull(message = "Count working days, Your Manager is going to check it.")
     private int daysCount;
+
+    @Column(name = "remaining_days")
+    private int remainingDays;
 
     @Enumerated(EnumType.STRING)
     private Status status;

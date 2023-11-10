@@ -8,7 +8,7 @@
 <div th:replace="~{/fragments/userDetails :: userInfo}"></div>
 
 <div class="container">
-    <div class="row">
+    <div class="text-center">
         <h3>Requests List (Manager)</h3>
     </div>
     <hr>
@@ -24,6 +24,7 @@
             <th class="text-center">Starting Date</th>
             <th class="text-center">Ending Date</th>
             <th class="text-center">Days Count</th>
+            <th class="text-center">Remaining Days</th>
             <th class="text-center">Edit</th>
             <th class="text-center">Status</th>
             <th class="text-center">Action</th>
@@ -39,14 +40,15 @@
             <td th:text="*{startingDate}"></td>
             <td class="text-center" th:text="*{endingDate}"></td>
             <td class="text-center" th:text="*{daysCount}"></td>
+            <td class="text-center" th:text="*{remainingDays}"></td>
 
-<!--                <div>-->
-<!--                    <a th:href="@{/listRequestsAdminMode/{requestDtoId}/edit(requestDtoId=${request.id})}"-->
-<!--                       class="btn btn-info btn-sm">Edit</a>-->
-<!--                </div>-->
+            <!--                <div>-->
+            <!--                    <a th:href="@{/listRequestsAdminMode/{requestDtoId}/edit(requestDtoId=${request.id})}"-->
+            <!--                       class="btn btn-info btn-sm">Edit</a>-->
+            <!--                </div>-->
 
             <td class="text-center">
-                <div>
+                <div th:if="${request.status.name().equals('PENDING')}">
                     <a th:href="@{/listRequestsManagerMode/{requestDtoId}/edit(requestDtoId=${request.id})}"
                        class="btn btn-info btn-sm">Edit</a>
                 </div>
@@ -82,7 +84,7 @@
     <div>
         <h6>
             <p>
-                * First check Days Count. If Days Count is incorrect, You should Edit it. <br>
+                * First Edit Days Count and Remaining Days. <br>
                 * Status PENDING - Employee is waiting for Your decision. <br>
                 * Employee can delete PENDING Request. <br>
                 * Status ACCEPTED or REJECTED is final. You can choose only once. Only Admin can undo it. <br>

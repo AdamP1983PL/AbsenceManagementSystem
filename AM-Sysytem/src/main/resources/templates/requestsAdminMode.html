@@ -7,7 +7,7 @@
 <nav th:replace="~{/fragments/navigation :: nav}"></nav>
 <div th:replace="~{/fragments/userDetails :: userInfo}"></div>
 <div class="container">
-    <div class="row">
+    <div class="text-center">
         <h3>Requests List (Admin)</h3>
     </div>
     <hr>
@@ -23,6 +23,7 @@
             <th class="text-center">Starting Date</th>
             <th class="text-center">Ending Date</th>
             <th class="text-center">Days Count</th>
+            <th class="text-center">Remaining Days</th>
             <th class="text-center">Status</th>
             <th class="text-center">Action</th>
         </tr>
@@ -37,6 +38,7 @@
             <td class="text-center" th:text="*{startingDate}"></td>
             <td class="text-center" th:text="*{endingDate}"></td>
             <td class="text-center" th:text="*{daysCount}"></td>
+            <td class="text-center" th:text="*{remainingDays}"></td>
             <td class="text-center" th:text="*{status}"></td>
             <td class="text-center">
                 <div class="text-center">

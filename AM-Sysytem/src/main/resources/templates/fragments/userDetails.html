@@ -7,12 +7,11 @@
     <title>Title</title>
 </head>
 <body>
-<div class="footer" th:fragment="userInfo">
-    <p>
-        User: <span sec:authentication="principal.username"></span>
-        <br>
+<div class="" th:fragment="userInfo">
+    <h6>
+        User: <span sec:authentication="principal.username"></span><br>
         Role(s): <span sec:authentication="principal.authorities"></span>
-    </p>
+    </h6>
 </div>
 </body>
 </html>

@@ -47,6 +47,7 @@ public class RequestServiceImpl implements RequestService {
         requestDto.setLastName(employee.getLastName());
         requestDto.setFirstName(employee.getFirstName());
         requestDto.setEmail(employee.getEmail());
+        requestDto.setRemainingDays(employee.getRemainingDays());
         requestDto.setStatus(Status.PENDING);
         requestRepository.save(RequestMapper.mapToRequest(requestDto));
     }

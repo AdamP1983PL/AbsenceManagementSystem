@@ -41,8 +41,11 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
 
-    @Column(name = "due_days", nullable = false)
-    private int dueDays;
+//    @Column(name = "due_days", nullable = false)
+//    private int dueDays;
+
+    @Column(name = "remaining_days", nullable = false)
+    private int remainingDays;
 
     @OneToMany(fetch = FetchType.EAGER,
             mappedBy = "employee",
