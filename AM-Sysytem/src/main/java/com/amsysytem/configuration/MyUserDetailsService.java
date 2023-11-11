@@ -53,5 +53,4 @@ public class MyUserDetailsService implements UserDetailsService {
         return new BCryptPasswordEncoder(11);
     }
 
-
 }

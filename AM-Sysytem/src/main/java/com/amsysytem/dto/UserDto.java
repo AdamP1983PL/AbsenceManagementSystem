@@ -1,7 +1,6 @@
 package com.amsysytem.dto;
 
 import com.amsysytem.entity.Authority;
-
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

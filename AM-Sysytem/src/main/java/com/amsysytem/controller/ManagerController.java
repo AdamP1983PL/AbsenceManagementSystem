@@ -2,14 +2,15 @@ package com.amsysytem.controller;
 
 import com.amsysytem.dto.EmployeeDto;
 import com.amsysytem.dto.RequestDto;
-import com.amsysytem.repositories.RequestRepository;
+import com.amsysytem.enums.Status;
 import com.amsysytem.service.EmployeeServiceImpl;
 import com.amsysytem.service.RequestServiceImpl;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,24 +35,43 @@ public class ManagerController {
         return "employeeDetailsManagersSpace";
     }
 
-    @GetMapping("/manager/{employeeDtoId}/singleList")
-    public String showOneUserRequestsList(@PathVariable("employeeDtoId") Long employeeDtoId, Model model) {
-        List<RequestDto> oneUserRequestsList = requestServiceImpl.findRequestsByEmployeeId(employeeDtoId);
-        model.addAttribute("oneUserRequestsList", oneUserRequestsList);
-        return "oneUserRequestsList";
+    @GetMapping("/manager/listRequestsManagerMode")
+    public String listRequestsManagerMode(Model model) {
+        List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
+        model.addAttribute("requestDtoList", requestDtoList);
+        return "requestsManagerMode";
     }
 
+    @GetMapping("/listRequestsManagerMode/{requestDtoId}/edit")
+    public String editRequestByManager(@PathVariable("requestDtoId") Long requestDtoId, Model model) {
+        RequestDto requestDto = requestServiceImpl.getRequestDtoById(requestDtoId);
+        model.addAttribute("requestDto", requestDto);
+        return "editRequestByManager";
+    }
+
+    @PostMapping("/manager/updateRequest/{requestDtoId}")
+    public String updateRequestByManager(@PathVariable("requestDtoId") Long requestDtoId,
+                                         @Valid @ModelAttribute("requestDto") RequestDto requestDto,
+                                         BindingResult result,
+                                         Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("requestDto", requestDto);
+            return "editRequestByManager";
+        }
+        requestDto.setId(requestDtoId);
+        requestServiceImpl.updateRequestByManager(requestDto);
+        return "redirect:/manager/listRequestsManagerMode";
+    }
+
+    @GetMapping("/updateStatus")
+    public String updateStatus(@RequestParam Long id, @RequestParam Status status) {
+        RequestDto requestDto = requestServiceImpl.getRequestDtoById(id);
+        requestDto.setStatus(status);
+        requestServiceImpl.updateStatus(requestDto);
+        return "redirect:/manager/listRequestsManagerMode";
+    }
 }
 
-//todo change camelCase in html names
-
-
-//    @GetMapping("/employees-managers-list")
-//    public String listEmployeesManagerMode(Model model){
-//        List<EmployeeDto> employeeDtoList = employeeServiceImpl.getAllEmployees();
-//        model.addAttribute("employeeDtoList", employeeDtoList);
-//        return "employees-manager-mode";
-//    }
 
 
 

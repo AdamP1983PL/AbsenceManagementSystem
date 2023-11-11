@@ -6,7 +6,6 @@
 <body>
 <nav th:replace="~{/fragments/navigation :: nav}"></nav>
 <div th:replace="~{/fragments/userDetails :: userInfo}"></div>
-
 <div class="container row col-md-6 offset-md-3">
     <div class="card">
         <div class="card-header">
@@ -15,53 +14,29 @@
         <div class="card-body">
             <form action="#" method="post" role="form"
                   th:action="@{/saveNewRequest}" th:object="${requestDtoToAdd}">
-
-<!--                <div class="form-group mb-3">-->
-<!--                    <label class="form-label">Last Name</label>-->
-<!--                    <input class="form-control" th:field="*{lastName}"-->
-<!--                           type="text" id="lastName" placeholder="Enter Last Name">-->
-<!--                    <p th:if="${#fields.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}"></p>-->
-<!--                </div>-->
-
-<!--                <div class="form-group mb-3">-->
-<!--                    <label class="form-label">First Name</label>-->
-<!--                    <input class="form-control" th:field="*{firstName}"-->
-<!--                           type="text" id="firstName" placeholder="Enter First Name">-->
-<!--                    <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>-->
-<!--                </div>-->
-
-<!--                <div class="form-group mb-3">-->
-<!--                    <label class="form-label">Email</label>-->
-<!--                    <input class="form-control" th:field="*{email}"-->
-<!--                           type="email" id="email" placeholder="Enter Email">-->
-<!--                    <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>-->
-<!--                </div>-->
-
                 <div class="form-group mb-3">
-                    <label class="form-label">Starting Date</label>
+                    <label for="startingDate" class="form-label">Starting Date</label>
                     <input class="form-control" th:field="*{startingDate}"
                            type="date" id="startingDate" placeholder="Enter Starting Date">
                     <p th:if="${#fields.hasErrors('startingDate')}" class="text-danger" th:errors="*{startingDate}"></p>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label class="form-label">Ending Date</label>
+                    <label for="endingDate" class="form-label">Ending Date</label>
                     <input class="form-control" th:field="*{endingDate}"
                            type="date" id="endingDate" placeholder="Enter Ending Date">
                     <p th:if="${#fields.hasErrors('endingDate')}" class="text-danger" th:errors="*{endingDate}"></p>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label class="form-label">Days Count</label>
+                    <label for="daysCount" class="form-label">Days Count</label>
                     <input class="form-control" th:field="*{daysCount}"
                            type="number" id="daysCount" placeholder="Enter Days Count">
                     <p th:if="${#fields.hasErrors('daysCount')}" class="text-danger" th:errors="*{daysCount}"></p>
                 </div>
-
                 <div class="mb-3">
                     <button class="btn btn-primary btn-sm" type="submit">Save New Request</button>
                 </div>
-
             </form>
             <div class="mb-3">
                 <h5>

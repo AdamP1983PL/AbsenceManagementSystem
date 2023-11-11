@@ -7,8 +7,3 @@ INSERT INTO amsystemdb.employees
 VALUES
     (null, 'admin', 'admin', 'admin@admin.com', '$2y$11$mpya140ccuKgw/8MGifSHuzkUxDlBFUWNdjJ/AFT7Z3XsQwCm7bDC',
         000000000, 'ADMIN', 0);
-
-# VALUES (null, 0, 0, 'admin@admin.pl', 'ADMIN', 'admin', 'admin',
-#            '$2y$11$mpya140ccuKgw/8MGifSHuzkUxDlBFUWNdjJ/AFT7Z3XsQwCm7bDC','123123123');
-
-

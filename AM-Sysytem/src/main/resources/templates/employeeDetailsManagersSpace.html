@@ -19,11 +19,6 @@
                   role="form"
                   th:action="@{/employees/{employeeDtoId}(employeeDtoId=${employeeDetailsDto.id})/detailsManagersSpace}"
                   th:object="${employeeDetailsDto}">
-
-                <!--        <div class="">-->
-                <!--          <input class="form-control" th:field="*{id}"-->
-                <!--                 type="hidden" id="id" name="id">-->
-                <!--        </div>-->
                 <h5>
                     <p>Id: <span th:text="${employeeDetailsDto.id}"></span></p>
                     <p>Last Name: <span th:text="${employeeDetailsDto.lastName}"></span></p>
@@ -31,7 +26,7 @@
                     <p>Email: <span th:text="${employeeDetailsDto.email}"></span></p>
                     <p>Phone number: <span th:text="${employeeDetailsDto.phoneNumber}"></span></p>
                     <p>Role: <span th:text="${employeeDetailsDto.employeeRole}"></span></p>
-                    <p>Remaining Days: <span th:text="${employeeDetailsDto.remainingDays}"></span></p>
+                    <p>Due Days: <span th:text="${employeeDetailsDto.remainingDays}"></span></p>
                 </h5>
             </form>
             <div class="mb-3">

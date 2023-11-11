@@ -41,19 +41,12 @@
             <td class="text-center" th:text="*{endingDate}"></td>
             <td class="text-center" th:text="*{daysCount}"></td>
             <td class="text-center" th:text="*{remainingDays}"></td>
-
-            <!--                <div>-->
-            <!--                    <a th:href="@{/listRequestsAdminMode/{requestDtoId}/edit(requestDtoId=${request.id})}"-->
-            <!--                       class="btn btn-info btn-sm">Edit</a>-->
-            <!--                </div>-->
-
             <td class="text-center">
                 <div th:if="${request.status.name().equals('PENDING')}">
                     <a th:href="@{/listRequestsManagerMode/{requestDtoId}/edit(requestDtoId=${request.id})}"
                        class="btn btn-info btn-sm">Edit</a>
                 </div>
             </td>
-
             <td class="text-center" th:text="*{status}"></td>
             <td class="text-center">
                 <div th:if="${request.status.name().equals('PENDING')}">
@@ -83,13 +76,11 @@
     <hr>
     <div>
         <h6>
-            <p>
                 * First Edit Days Count and Remaining Days. <br>
                 * Status PENDING - Employee is waiting for Your decision. <br>
                 * Employee can delete PENDING Request. <br>
                 * Status ACCEPTED or REJECTED is final. You can choose only once. Only Admin can undo it. <br>
                 * Employee can not delete ACCEPTED or REJECTED Request.
-            </p>
         </h6>
     </div>
 </div>

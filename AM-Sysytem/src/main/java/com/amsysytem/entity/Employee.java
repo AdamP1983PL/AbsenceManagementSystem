@@ -1,7 +1,6 @@
 package com.amsysytem.entity;
 
 import com.amsysytem.enums.EmployeeRole;
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -41,9 +40,6 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
 
-//    @Column(name = "due_days", nullable = false)
-//    private int dueDays;
-
     @Column(name = "remaining_days", nullable = false)
     private int remainingDays;
 
@@ -51,5 +47,6 @@ public class Employee {
             mappedBy = "employee",
             cascade = CascadeType.ALL)
     private List<Request> request = new ArrayList<>();
+
 }
-//todo delete mapping employee - requests
+

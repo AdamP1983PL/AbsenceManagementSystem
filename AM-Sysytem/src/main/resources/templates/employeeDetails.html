@@ -6,7 +6,6 @@
 <body>
 <nav th:replace="~{/fragments/navigation :: nav}"></nav>
 <div th:replace="~{/fragments/userDetails :: userInfo}"></div>
-
 <div class="container row col-md-6 offset-md-3">
     <div class="card">
         <div class="card-header">
@@ -18,11 +17,6 @@
                   role="form"
                   th:action="@{admin/{employeeDtoId}(employeeDtoId=${employeeDetailsDto.id})/details}"
                   th:object="${employeeDetailsDto}">
-
-                <!--        <div class="">-->
-                <!--          <input class="form-control" th:field="*{id}"-->
-                <!--                 type="hidden" id="id" name="id">-->
-                <!--        </div>-->
                 <h5>
                     <p>Id:
                         <span th:text="${employeeDetailsDto.id}"></span>
@@ -54,7 +48,6 @@
                 <h5>
                     <a th:href="@{/admin/employees}">Back to List of Employees</a>
                 </h5>
-
             </div>
         </div>
     </div>

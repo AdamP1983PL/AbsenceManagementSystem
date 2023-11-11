@@ -22,7 +22,6 @@
             <th class="text-center">Phone Number</th>
             <th class="text-center">Employee Role</th>
             <th class="text-center">Due Days</th>
-<!--            <th class="text-center">Requests</th>-->
             <th>
                 <div class="text-center">
                     Show Details
@@ -39,10 +38,6 @@
             <td class="text-center" th:text="*{phoneNumber}"></td>
             <td class="text-center" th:text="*{employeeRole}"></td>
             <td class="text-center" th:text="*{remainingDays}"></td>
-<!--            <td class="text-center">-->
-<!--                <a th:href="@{/manager/{employeeDtoId}/singleList(employeeDtoId=${employee.id})}"-->
-<!--                   class="btn btn-primary btn-sm">Requests</a>-->
-<!--            </td>-->
             <td class="text-center">
                 <a th:href="@{/manager/{employeeDtoId}/detailsManagersSpace(employeeDtoId=${employee.id})}"
                    class="btn btn-primary btn-sm">Details</a>
@@ -59,7 +54,6 @@
             * Due Days - maximum number of days off per year for a given Employee.
         </h6>
     </div>
-
 </div>
 </body>
 </html>

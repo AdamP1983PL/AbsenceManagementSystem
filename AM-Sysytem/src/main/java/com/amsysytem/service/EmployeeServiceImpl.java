@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
     private final PasswordEncoder passwordEncoder;
@@ -27,7 +27,6 @@ public class EmployeeServiceImpl implements EmployeeService{
                 .collect(Collectors.toList());
 
         return employeeDtos;
-
     }
 
     @Override
@@ -38,19 +37,6 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public EmployeeDto getEmployeeDtoById(Long employeeDtoId) {
-        Optional<Employee> tempEmployee = employeeRepository.findById(employeeDtoId);
-
-        Employee employee;
-        if (tempEmployee.isPresent()){
-            employee = tempEmployee.get();
-        } else {
-            throw new RuntimeException("There is no Employee for id: " + employeeDtoId);
-        }
-        return EmployeeMapper.mapToEmployeeDto(employee);
-    }
-
-    @Override
     public void updateEmployee(EmployeeDto employeeDto) {
         employeeRepository.save(EmployeeMapper.mapToEmployee(employeeDto));
     }
@@ -58,6 +44,19 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public void deleteEmployee(Long employeeDtoId) {
         employeeRepository.deleteById(employeeDtoId);
+    }
+
+    @Override
+    public EmployeeDto getEmployeeDtoById(Long employeeDtoId) {
+        Optional<Employee> tempEmployee = employeeRepository.findById(employeeDtoId);
+
+        Employee employee;
+        if (tempEmployee.isPresent()) {
+            employee = tempEmployee.get();
+        } else {
+            throw new RuntimeException("There is no Employee for id: " + employeeDtoId);
+        }
+        return EmployeeMapper.mapToEmployeeDto(employee);
     }
 
     @Override

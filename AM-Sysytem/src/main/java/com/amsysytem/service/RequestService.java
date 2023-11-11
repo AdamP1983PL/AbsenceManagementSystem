@@ -8,11 +8,13 @@ public interface RequestService {
 
     List<RequestDto> getAllRequests();
 
-//TODO  List<RequestDto> findRequestsByEmployee(EmployeeDto employeeDto); ???
+    List<RequestDto> findRequestsByUserId(Long id);
 
-//TODO  List<RequestDto> findRequestsByStatus(Status status); ???
+    List<RequestDto> findRequestsByUserEmail(String name);
 
     void save(RequestDto requestDto, String email);
+
+    void updateStatus(RequestDto requestDto);
 
     void updateRequest(RequestDto requestDto);
 
@@ -21,9 +23,5 @@ public interface RequestService {
     void deleteRequest(Long id);
 
     RequestDto getRequestDtoById(Long requestDtoId);
-
-    List<RequestDto> findRequestsByUserId(Long id);
-
-    void updateStatus(RequestDto requestDto);
 
 }

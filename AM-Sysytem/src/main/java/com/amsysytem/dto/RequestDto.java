@@ -27,18 +27,13 @@ public class RequestDto {
 
     private Long id;
 
-//    @NotEmpty(message = "Last Name should not be empty")
     private String lastName;
 
-//    @NotEmpty(message = "First Name should not be empty")
     private String firstName;
 
-//    @NotEmpty(message = "Email should not be empty")
-//    @Email
     private String email;
 
     @CreationTimestamp
-//    @NotNull(message = "Date-Time Updated should not be empty")
     private LocalDateTime dateTimeCreated;
 
     @NotNull(message = "Starting date should not be empty")

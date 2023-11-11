@@ -1,7 +1,10 @@
 package com.amsysytem.controller;
 
 import com.amsysytem.dto.EmployeeDto;
+import com.amsysytem.dto.RequestDto;
+import com.amsysytem.enums.Status;
 import com.amsysytem.service.EmployeeServiceImpl;
+import com.amsysytem.service.RequestServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,7 @@ import java.util.List;
 public class AdminController {
 
     private final EmployeeServiceImpl employeeServiceImpl;
+    public final RequestServiceImpl requestServiceImpl;
 
     @GetMapping("admin/employees")
     public String listEmployees(Model model) {
@@ -79,5 +83,44 @@ public class AdminController {
         EmployeeDto employeeDetailsDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
         model.addAttribute("employeeDetailsDto", employeeDetailsDto);
         return "employeeDetails";
+    }
+
+    @GetMapping("admin/listRequestsAdminMode")
+    public String listRequestsAdminMode(Model model) {
+        List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
+        model.addAttribute("requestDtoList", requestDtoList);
+        return "requestsAdminMode";
+    }
+
+    @GetMapping("/listRequestsAdminMode/{requestDtoId}/edit")
+    public String editRequestAdminMode(@PathVariable("requestDtoId") Long requestDtoId, Model model) {
+        RequestDto requestDto = requestServiceImpl.getRequestDtoById(requestDtoId);
+        model.addAttribute("requestDto", requestDto);
+        return "editRequestAdminSpace";
+    }
+
+    @PostMapping("/admin/updateRequest/{requestDtoId}")
+    public String updateRequest(@PathVariable("requestDtoId") Long requestDtoId,
+                                @Valid @ModelAttribute("requestDto") RequestDto requestDto,
+                                BindingResult result,
+                                Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("requestDto", requestDto);
+            return "editRequestAdminSpace";
+        }
+        requestDto.setId(requestDtoId);
+        requestServiceImpl.updateRequest(requestDto);
+        return "redirect:/admin/listRequestsAdminMode";
+    }
+
+    @GetMapping("/admin/listRequestsAdminMode/{requestDtoId}/delete")
+    public String deleteRequest(@PathVariable("requestDtoId") Long requestDtoId) {
+        requestServiceImpl.deleteRequest(requestDtoId);
+        return "redirect:/admin/listRequestsAdminMode";
+    }
+
+    @ModelAttribute("Status")
+    public Status[] selectStatus() {
+        return Status.values();
     }
 }
