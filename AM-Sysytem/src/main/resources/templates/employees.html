@@ -42,7 +42,9 @@
             <td class="text-center">
                 <a th:href="@{{employeeDtoId}/edit(employeeDtoId=${employee.id})}"
                    class="btn btn-primary btn-sm">Edit</a>
-                <a th:href="@{{employeeDtoId}/delete(employeeDtoId=${employee.id})}"
+
+                <a th:unless="${employee.getEmployeeRole().name().equals('ADMIN')}"
+                   th:href="@{{employeeDtoId}/delete(employeeDtoId=${employee.id})}"
                    class="btn btn-danger btn-sm"
                    onclick="if (!(confirm('Delete this employee?'))) return false">Delete</a>
             </td>
