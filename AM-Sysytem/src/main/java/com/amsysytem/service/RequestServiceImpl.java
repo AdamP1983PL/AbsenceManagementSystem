@@ -62,10 +62,11 @@ public class RequestServiceImpl implements RequestService {
 //         todo here
         Request request = requestRepository.findById(requestDto.getId())
                         .orElseThrow(() -> new EntityNotFoundException("There is no Request for id: " + requestDto.getId()));
-        requestDto.setFirstName(requestDto.getFirstName());
-        requestDto.setLastName(requestDto.getLastName());
+        requestDto.setFirstName(request.getFirstName());
+        requestDto.setLastName(request.getLastName());
         requestDto.setEmail(request.getEmail());
         requestDto.setStatus(Status.PENDING);
+        requestDto.setDateTimeCreated(request.getDateTimeCreated());
         requestRepository.save(RequestMapper.mapToRequest(requestDto));
     }
 

@@ -62,14 +62,18 @@
                             >
                             </option>
                         </select>
+                    <h6>
+                        * Note that default Role is ADMIN. Make sure to select proper Role.
+                    </h6>
                     </p>
                 </div>
-                        <div class="form-group mb-3">
-                          <label class="form-label">Due Days (0 - 52)</label>
-                          <input class="form-control" th:field="*{remainingDays}"
-                                 type="number" id="remainingDays" name="remainingDays" placeholder="Enter Remaining Days">
-                          <p th:if="${#fields.hasErrors('remainingDays')}" class="text-danger" th:errors="*{remainingDays}"></p>
-                        </div>
+                <div class="form-group mb-3">
+                    <label class="form-label">Due Days per Year</label>
+                    <input class="form-control" th:field="*{remainingDays}"
+                           type="number" id="remainingDays" name="remainingDays" placeholder="Enter Remaining Days">
+                    <p th:if="${#fields.hasErrors('remainingDays')}" class="text-danger"
+                       th:errors="*{remainingDays}"></p>
+                </div>
                 <div class="mb-3">
                     <button class="btn btn-primary" type="submit">Save Employee</button>
                 </div>
@@ -85,7 +89,9 @@
             <div>
                 <h6>
                     <p>* Password is encrypted ("$2a$11$"). If You want to change it proceed to:
-                        <a href="https://bcrypt-generator.com/">Bcrypt-Generator</a>
+                        <a href="https://bcrypt-generator.com/">Bcrypt-Generator</a><br>
+                        * Accidentally changing the role to ADMIN/MANAGER makes confidential information available to an
+                        unauthorized person.
                     </p>
                 </h6>
             </div>

@@ -20,6 +20,7 @@
             <th>Starting Date</th>
             <th>Ending Date</th>
             <th>Days Count</th>
+            <th>Remaining Days</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
@@ -31,6 +32,7 @@
             <td th:text="*{startingDate}"></td>
             <td th:text="*{endingDate}"></td>
             <td th:text="*{daysCount}"></td>
+            <td th:text="*{remainingDays}"></td>
             <td th:text="*{status}"></td>
             <td>
                 <a th:if="${request.status.name().equals('PENDING')}"
