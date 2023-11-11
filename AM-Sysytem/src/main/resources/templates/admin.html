@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+<div class="container">
+    <div class="text-center">
+        <div>
+            <h3>This is Admin Space.</h3>
+        </div>
+        <hr>
+        <br>
+        <div>
+            <a th:href="@{/admin/employees}">
+                <h3>All Employee List</h3>
+            </a>
+        </div>
+        <div>
+            <a th:href="@{/admin/newEmployee}">
+                <h3>Add New Employee</h3>
+            </a>
+        </div>
+        <div>
+            <a th:href="@{/admin/listRequestsAdminMode}">
+                <h3>All Requests List</h3>
+            </a>
+        </div>
+        <br>
+        <div class="mb-3">
+            <h5>
+                <a th:href="@{/index}">Back to Home</a>
+            </h5>
+        </div>
+        <hr>
+    </div>
+    <div>
+        <h6>
+            * When you first run the application, there is only one User in the database: ADMIN <br>
+            * You need to create Users and assign their roles. <br>
+            * After creating Users, provide them with a login and password so that they can start using the application
+            <br>
+            * Remember that when creating a new User, the ADMIN role is assigned to him by default. <br>
+            * Accidentally setting the role to ADMIN/MANAGER makes confidential information available to an
+            unauthorized person. <br>
+            * Pay special attention to assigning the appropriate Role to the Users.
+        </h6>
+    </div>
+</div>
+</body>
+</html>
+
+

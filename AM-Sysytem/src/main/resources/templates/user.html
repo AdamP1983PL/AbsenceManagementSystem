@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+
+<div class="container">
+    <div class="text-center">
+        <div>
+            <h3>This is User Space.</h3>
+        </div>
+        <hr>
+        <br>
+        <div>
+            <h3>
+                <a th:href="@{/user/myRequestsList}">My Requests List</a>
+            </h3>
+        </div>
+        <div>
+            <h3>
+                <a th:href="@{/user/addNewRequest}">Add New Request</a>
+            </h3>
+        </div>
+        <br>
+        <div class="mb-3">
+            <h5>
+                <a th:href="@{/index}">Back to Home</a>
+            </h5>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

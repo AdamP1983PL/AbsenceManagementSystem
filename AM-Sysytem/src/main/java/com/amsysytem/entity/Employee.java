@@ -2,18 +2,18 @@ package com.amsysytem.entity;
 
 import com.amsysytem.enums.EmployeeRole;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Data
-@Table(name = "employees")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Entity
+@Table(name = "employees")
 public class Employee {
 
     @Id
@@ -21,30 +21,32 @@ public class Employee {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "employee_role")
+    @Column(name = "employee_role", nullable = false)
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
 
-    @Column(name = "due_days")
-    private int dueDays;
+    @Column(name = "remaining_days", nullable = false)
+    private int remainingDays;
 
     @OneToMany(fetch = FetchType.EAGER,
             mappedBy = "employee",
             cascade = CascadeType.ALL)
     private List<Request> request = new ArrayList<>();
+
 }
+

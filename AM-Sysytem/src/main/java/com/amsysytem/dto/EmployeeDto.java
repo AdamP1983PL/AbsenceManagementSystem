@@ -42,7 +42,9 @@ public class EmployeeDto {
 
     @Min(0)
     @Max(52)
-    private int dueDays;
+    private int remainingDays;
 
     private List<Request> request = new ArrayList<>();
 }
+
+

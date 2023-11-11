@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+<div class="container">
+    <div class="text-center">
+        <h3>Requests List (Admin)</h3>
+    </div>
+    <hr>
+    <br>
+    <table class="table table-striped table-hover table-bordered table-primary">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email</th>
+            <th class="text-center">Date-Time Created</th>
+            <th class="text-center">Starting Date</th>
+            <th class="text-center">Ending Date</th>
+            <th class="text-center">Days Count</th>
+            <th class="text-center">Remaining Days</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="request : ${requestDtoList}" th:object="${request}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{lastName}"></td>
+            <td th:text="*{firstName}"></td>
+            <td th:text="*{email}"></td>
+            <td class="text-center" th:text="*{#temporals.format(dateTimeCreated, 'dd-MM-yyyy HH:mm')}"></td>
+            <td class="text-center" th:text="*{startingDate}"></td>
+            <td class="text-center" th:text="*{endingDate}"></td>
+            <td class="text-center" th:text="*{daysCount}"></td>
+            <td class="text-center" th:text="*{remainingDays}"></td>
+            <td class="text-center" th:text="*{status}"></td>
+            <td class="text-center">
+                <div class="text-center">
+                    <a th:href="@{/listRequestsAdminMode/{requestDtoId}/edit(requestDtoId=${request.id})}"
+                       class="btn btn-info btn-sm">Edit</a>
+                    <a th:href="@{listRequestsAdminMode/{requestDtoId}/delete(requestDtoId=${request.id})}"
+                       class="btn btn-danger btn-sm"
+                       onclick="if (!(confirm('Delete this request?'))) return false">Delete</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <h5>
+            <a th:href="@{/admin}">Back to Admin Space</a>
+        </h5>
+    </div>
+    <hr>
+    <div>
+        <h6>
+            * As an ADMIN You have special privileges: <br>
+            * You can Edit Date-Time Created, Starting Date, Ending Date and Days Count. <br>
+            * You can Edit only future dates. <br>
+            * After Editing, Status is set to PENDING. <br>
+            * Delete is final. You can not undo it. <br>
+        </h6>
+    </div>
+</div>
+</body>
+</html>

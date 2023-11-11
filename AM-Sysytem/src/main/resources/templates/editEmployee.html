@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+
+<div class="container row col-md-6 offset-md-3">
+    <div class="card">
+        <div class="card-header">
+            <h4>Edit Employee</h4>
+        </div>
+        <div class="card-body">
+            <form action="#" method="post" role="form"
+                  th:action="@{/admin/{employeeDtoId}(employeeDtoId=${employeeDto.id})}"
+                  th:object="${employeeDto}">
+
+                <div class="">
+                    <input class="form-control" th:field="*{id}"
+                           type="hidden" id="id" name="id">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input class="form-control" th:field="*{lastName}"
+                           type="text" id="lastName" name="lastName" placeholder="Enter Last Name">
+                    <p th:if="${#fields.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}"></p>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input class="form-control" th:field="*{firstName}"
+                           type="text" id="firstName" name="firstname" placeholder="Enter First Name">
+                    <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input class="form-control" th:field="*{email}"
+                           type="email" id="email" name="email" placeholder="Enter Email">
+                    <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input class="form-control" th:field="*{password}"
+                           type="text" id="password" name="password" placeholder="Enter Password">
+                    <p th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></p>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <input class="form-control" th:field="*{phoneNumber}"
+                           type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone number">
+                    <p th:if="${#fields.hasErrors('phoneNumber')}" class="text-danger" th:errors="*{phoneNumber}"></p>
+                </div>
+                <div class="form-group mb-3">
+                    <p> Select Employee Role:
+                        <select name="EmployeeRole">
+                            <option value=""
+                                    th:each="employeeRole : ${T(com.amsysytem.enums.EmployeeRole).values()}"
+                                    th:text="${employeeRole.displayText}"
+                                    th:value="${employeeRole.name()}"
+                            >
+                            </option>
+                        </select>
+                    <h6>
+                        * Note that default Role is ADMIN. Make sure to select proper Role.
+                    </h6>
+                    </p>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="remainingDays" class="form-label">Due Days per Year</label>
+                    <input class="form-control" th:field="*{remainingDays}"
+                           type="number" id="remainingDays" name="remainingDays" placeholder="Enter Remaining Days">
+                    <p th:if="${#fields.hasErrors('remainingDays')}" class="text-danger"
+                       th:errors="*{remainingDays}"></p>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Save Employee</button>
+                </div>
+
+            </form>
+
+            <div class="mb-3">
+                <h5>
+                    <a th:href="@{/admin/employees}">Back to Employee List</a>
+                </h5>
+            </div>
+            <div>
+                <h6>
+                    * Password is encrypted ("$2a$11$"). If You want to change it proceed to:
+                    <a href="https://bcrypt-generator.com/">Bcrypt-Generator</a><br>
+                    * When editing, the employee role is set to ADMIN by default. <br>
+                    * Accidentally changing the role to ADMIN/MANAGER makes confidential information available to an
+                    unauthorized person.
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

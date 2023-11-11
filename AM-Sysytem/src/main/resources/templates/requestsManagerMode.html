@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+
+<div class="container">
+    <div class="text-center">
+        <h3>Requests List (Manager)</h3>
+    </div>
+    <hr>
+    <br>
+    <table class="table table-striped table-hover table-bordered table-primary">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email</th>
+            <th class="text-center">Date-Time Created</th>
+            <th class="text-center">Starting Date</th>
+            <th class="text-center">Ending Date</th>
+            <th class="text-center">Days Count</th>
+            <th class="text-center">Remaining Days</th>
+            <th class="text-center">Edit</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="request : ${requestDtoList}" th:object="${request}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{lastName}"></td>
+            <td th:text="*{firstName}"></td>
+            <td th:text="*{email}"></td>
+            <td class="text-center" th:text="*{#temporals.format(dateTimeCreated, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="*{startingDate}"></td>
+            <td class="text-center" th:text="*{endingDate}"></td>
+            <td class="text-center" th:text="*{daysCount}"></td>
+            <td class="text-center" th:text="*{remainingDays}"></td>
+            <td class="text-center">
+                <div th:if="${request.status.name().equals('PENDING')}">
+                    <a th:href="@{/listRequestsManagerMode/{requestDtoId}/edit(requestDtoId=${request.id})}"
+                       class="btn btn-info btn-sm">Edit</a>
+                </div>
+            </td>
+            <td class="text-center" th:text="*{status}"></td>
+            <td class="text-center">
+                <div th:if="${request.status.name().equals('PENDING')}">
+                    <a th:unless="${request.status.name().equals('PENDING')}" class="btn btn-sm btn-primary"
+                       th:href="@{/updateStatus(id=${request.getId()}, status = 'PENDING')}"
+                       onclick="if (!(confirm('It is final decision!'))) return false">PENDING</a>
+
+                    <a th:unless="${request.status.name().equals('ACCEPTED')}" class="btn btn-sm btn-success"
+                       th:href="@{/updateStatus(id=${request.getId()}, status = 'ACCEPTED')}"
+                       onclick="if (!(confirm('It is final decision!'))) return false">ACCEPTED</a>
+
+                    <a th:unless="${request.status.name().equals('REJECTED')}" class="btn btn-sm btn-warning"
+                       th:href="@{/updateStatus(id=${request.getId()}, status = 'REJECTED')}"
+                       onclick="if (!(confirm('It is final decision!'))) return false">REJECTED</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+    </div>
+    <div>
+        <h5>
+            <a th:href="@{/manager}">Back to Manager Space</a>
+        </h5>
+    </div>
+    <hr>
+    <div>
+        <h6>
+                * First Edit Days Count and Remaining Days. <br>
+                * Status PENDING - Employee is waiting for Your decision. <br>
+                * Employee can delete PENDING Request. <br>
+                * Status ACCEPTED or REJECTED is final. You can choose only once. Only Admin can undo it. <br>
+                * Employee can not delete ACCEPTED or REJECTED Request.
+        </h6>
+    </div>
+</div>
+</body>
+</html>

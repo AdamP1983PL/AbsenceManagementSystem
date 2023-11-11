@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+<div class="container row col-md-6 offset-md-3">
+    <div class="card">
+        <div class="card-header">
+            <h3>Employee Details</h3>
+        </div>
+        <div class="card-body">
+            <form action="#"
+                  method="get"
+                  role="form"
+                  th:action="@{admin/{employeeDtoId}(employeeDtoId=${employeeDetailsDto.id})/details}"
+                  th:object="${employeeDetailsDto}">
+                <h5>
+                    <p>Id:
+                        <span th:text="${employeeDetailsDto.id}"></span>
+                    </p>
+                    <p>Last Name:
+                        <span th:text="${employeeDetailsDto.lastName}"></span>
+                    </p>
+                    <p>First Name:
+                        <span th:text="${employeeDetailsDto.firstName}"></span>
+                    </p>
+                    <p>Email:
+                        <span th:text="${employeeDetailsDto.email}"></span>
+                    </p>
+                    <p>Password:
+                        <span th:text="${employeeDetailsDto.password}"></span>
+                    </p>
+                    <p>Phone number:
+                        <span th:text="${employeeDetailsDto.phoneNumber}"></span>
+                    </p>
+                    <p>Role:
+                        <span th:text="${employeeDetailsDto.employeeRole}"></span>
+                    </p>
+                    <p>Due Days:
+                        <span th:text="${employeeDetailsDto.remainingDays}"></span>
+                    </p>
+                </h5>
+            </form>
+            <div class="mb-3">
+                <h5>
+                    <a th:href="@{/admin/employees}">Back to List of Employees</a>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+<div class="container">
+    <div class="row">
+        <h3>List of Employees (Manager)</h3>
+    </div>
+    <hr>
+    <br>
+    <table class="table table-striped table-hover table-bordered table-primary">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email</th>
+            <th class="text-center">Phone Number</th>
+            <th class="text-center">Employee Role</th>
+            <th class="text-center">Due Days</th>
+            <th>
+                <div class="text-center">
+                    Show Details
+                </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employeeDtoList}" th:object="${employee}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{lastName}"></td>
+            <td th:text="*{firstName}"></td>
+            <td th:text="*{email}"></td>
+            <td class="text-center" th:text="*{phoneNumber}"></td>
+            <td class="text-center" th:text="*{employeeRole}"></td>
+            <td class="text-center" th:text="*{remainingDays}"></td>
+            <td class="text-center">
+                <a th:href="@{/manager/{employeeDtoId}/detailsManagersSpace(employeeDtoId=${employee.id})}"
+                   class="btn btn-primary btn-sm">Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <h5>
+            <a th:href="@{/manager}">Back to Manager Space</a>
+        </h5>
+        <hr>
+        <h6>
+            * Due Days - maximum number of days off per year for a given Employee.
+        </h6>
+    </div>
+</div>
+</body>
+</html>

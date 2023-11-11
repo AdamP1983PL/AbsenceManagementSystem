@@ -1,19 +1,19 @@
 package com.amsysytem.entity;
 
-import jakarta.persistence.*;
 import com.amsysytem.enums.Status;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Entity
 @Table(name = "requests")
 public class Request {
 
@@ -22,30 +22,30 @@ public class Request {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
     @CreationTimestamp
     @Column(name = "created")
     private LocalDateTime dateTimeCreated;
 
-    @Column(name = "starting_date")
+    @Column(name = "starting_date", nullable = false)
     private LocalDate startingDate;
 
-    @Column(name = "Ending_date")
+    @Column(name = "Ending_date", nullable = false)
     private LocalDate endingDate;
 
     @Column(name = "days_count")
     private int daysCount;
 
-    @Column(name = "due_days")
-    private int dueDays;
+    @Column(name = "remaining_days")
+    private int remainingDays;
 
     @Column(columnDefinition = "ENUM('ACCEPTED', 'REJECTED', 'PENDING')", name = "status")
     @Enumerated(EnumType.STRING)

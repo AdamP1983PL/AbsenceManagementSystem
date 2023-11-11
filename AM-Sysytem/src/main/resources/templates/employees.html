@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+<div class="container">
+    <div class="text-center">
+        <h3>List of Employees (Admin)</h3>
+    </div>
+    <hr>
+    <br>
+    <table class="table table-striped table-hover table-bordered table-primary">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email</th>
+            <th class="text-center">Phone Number</th>
+            <th class="text-center">Employee Role</th>
+            <th class="text-center">Due Days</th>
+            <th class="text-center">Show Details</th>
+            <th class="text-center">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employeeDtoList}" th:object="${employee}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{lastName}"></td>
+            <td th:text="*{firstName}"></td>
+            <td th:text="*{email}"></td>
+            <td class="text-center" th:text="*{phoneNumber}"></td>
+            <td class="text-center" th:text="*{employeeRole}"></td>
+            <td class="text-center" th:text="*{remainingDays}"></td>
+            <td class="text-center">
+                <a th:href="@{{employeeDtoId}/details(employeeDtoId=${employee.id})}"
+                   class="btn btn-primary btn-sm">Details</a>
+            </td>
+            <td class="text-center">
+                <a th:href="@{{employeeDtoId}/edit(employeeDtoId=${employee.id})}"
+                   class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{{employeeDtoId}/delete(employeeDtoId=${employee.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Delete this employee?'))) return false">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    <div>
+        <h5>
+            <a th:href="@{/admin/newEmployee}">Add New Employee</a>
+        </h5>
+    </div>
+    </p>
+    <p>
+    <div>
+        <h5>
+            <a th:href="@{/admin}">Back to Admin Space</a>
+        </h5>
+    </div>
+    <hr>
+    <div>
+        <h6>
+            * Delete is final. You can not undo it. <br>
+            * Due Days - maximum number of days off per year for a given Employee. <br>
+        </h6>
+    </div>
+    </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{/fragments/navigation :: nav}"></nav>
+<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+
+<div class="container">
+    <div class="text-center">
+        <div>
+            <h3>Managers Space.</h3>
+        </div>
+        <hr>
+        <br>
+        <br>
+        <div>
+            <h3>
+                <a th:href="@{/manager/managersList}">All Employee List</a>
+            </h3>
+        </div>
+        <div>
+            <h3>
+                <a th:href="@{/manager/listRequestsManagerMode}">All Requests List</a>
+            </h3>
+        </div>
+        <br>
+        <div class="mb-3">
+            <h5>
+                <a th:href="@{/index}">Back to Home</a>
+            </h5>
+        </div>
+    </div>
+</div>
+</body>
+</html>
