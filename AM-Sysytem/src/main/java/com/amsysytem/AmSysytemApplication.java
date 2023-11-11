@@ -12,4 +12,5 @@ public class AmSysytemApplication {
         SpringApplication.run(AmSysytemApplication.class, args);
     }
 
+
 }
