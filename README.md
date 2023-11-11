@@ -4,6 +4,9 @@
 Program ułatwiający zarządzanie nieobecnościami pracowników.
 
 ## Założenia:
+
+### Utworzenie bazowej wersji aplikacji przygotowanej pod dalszą rozbudowę.
+
 ### Pracownik:
 - Uzyskuje login i hasło do aplikacji od administratora (ADMIN).
 - Po zalogowaniu się ma dostęp do własnych wniosków urlopowych (REQUEST) oram mozliwość tworzenia nowego wniosku (REQUEST).
@@ -41,3 +44,4 @@ Program ułatwiający zarządzanie nieobecnościami pracowników.
   - CREATE DATABASE amsystemdb;
   - USE amsystemdb;
 - Domyślnie ustawiono: server.port = 8081
+
