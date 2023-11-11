@@ -36,7 +36,7 @@ Program ułatwiający zarządzanie nieobecnościami pracowników.
 
 
 ### Uwagi:
--Przed pierwszym uruchomieniem programu należy skonfigurować bazę danych w application.properties.
+- Przed pierwszym uruchomieniem programu należy skonfigurować bazę danych w application.properties.
 - Po konfiguracji w bazie danych należy utworzyć nową bazę danych korzystając z polecenia:
   - CREATE DATABASE amsystemdb;
   - USE amsystemdb;
