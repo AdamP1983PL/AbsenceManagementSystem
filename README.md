@@ -34,10 +34,12 @@ Program ułatwiający zarządzanie nieobecnościami pracowników.
   - Podgląd pod wszystkie wnioski urlopowe (REQUEST).
   - Możliwość edycji/usunięcia wniosków urlopowych (REQUEST).
 
- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
- # Przed pierwszym uruchomieniem programu należy skonfigurować bazę danych w application.properties.
- # Po konfiguracji w bazie danych należy utworzyć nową bazę danych korzystając z polecenia:
- ## CREATE DATABASE amsystemdb;
- ## USE amsystemdb;
- # Domyślnym portem jest 8081.
+## Uwagi:
+### Przed pierwszym uruchomieniem programu należy skonfigurować bazę danych w application.properties.
+### Po konfiguracji w bazie danych należy utworzyć nową bazę danych korzystając z polecenia:
+ 
+### CREATE DATABASE amsystemdb;
+### USE amsystemdb;
+
+## Domyślnym portem jest 8081.
