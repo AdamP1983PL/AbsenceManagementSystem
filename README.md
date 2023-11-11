@@ -40,4 +40,4 @@ Program ułatwiający zarządzanie nieobecnościami pracowników.
 - Po konfiguracji w bazie danych należy utworzyć nową bazę danych korzystając z polecenia:
   - CREATE DATABASE amsystemdb;
   - USE amsystemdb;
-- Domyślnym portem jest 8081.
+- Domyślnie ustawiono: server.port = 8081
