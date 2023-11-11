@@ -14,7 +14,7 @@
     <name>AM-Sysytem</name>
     <description>AM-Sysytem</description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
