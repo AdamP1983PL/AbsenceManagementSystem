@@ -27,7 +27,7 @@ public class WebSecurityConfig {
                 .logout(logout -> logout.permitAll()
                 )
                 .exceptionHandling(requests ->
-                        requests.accessDeniedPage("https://amsystemapp.up.railway.app/access-denied"));
+                        requests.accessDeniedPage("/amsystemapp.up.railway.app/access-denied"));
 
         return http.build();
     }
