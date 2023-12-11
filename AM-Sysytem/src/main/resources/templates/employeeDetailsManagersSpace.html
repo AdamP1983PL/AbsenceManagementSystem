@@ -17,7 +17,7 @@
             <form action="#"
                   method="get"
                   role="form"
-                  th:action="@{/employees/{employeeDtoId}(employeeDtoId=${employeeDetailsDto.id})/detailsManagersSpace}"
+                  th:action="@{https://amsystemapp.up.railway.app/employees/{employeeDtoId}(employeeDtoId=${employeeDetailsDto.id})/detailsManagersSpace}"
                   th:object="${employeeDetailsDto}">
                 <h5>
                     <p>Id: <span th:text="${employeeDetailsDto.id}"></span></p>
@@ -31,7 +31,7 @@
             </form>
             <div class="mb-3">
                 <h5>
-                    <a th:href="@{/manager/managersList}">Back to Employees List</a>
+                    <a th:href="@{https://amsystemapp.up.railway.app/manager/managersList}">Back to Employees List</a>
                 </h5>
             </div>
         </div>

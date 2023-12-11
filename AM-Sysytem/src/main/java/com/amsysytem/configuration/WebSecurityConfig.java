@@ -14,20 +14,20 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/").hasAnyAuthority("ADMIN", "MANAGER", "USER")
-                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
-                        .requestMatchers("/manager/**").hasAuthority("MANAGER")
-                        .requestMatchers("/user/**").hasAuthority("USER")
+                        .requestMatchers("https://amsystemapp.up.railway.app/").hasAnyAuthority("ADMIN", "MANAGER", "USER")
+                        .requestMatchers("https://amsystemapp.up.railway.app/admin/**").hasAuthority("ADMIN")
+                        .requestMatchers("https://amsystemapp.up.railway.app/manager/**").hasAuthority("MANAGER")
+                        .requestMatchers("https://amsystemapp.up.railway.app/user/**").hasAuthority("USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
-                        .loginPage("/login")
+                        .loginPage("https://amsystemapp.up.railway.app/login")
                         .permitAll()
                 )
                 .logout(logout -> logout.permitAll()
                 )
                 .exceptionHandling(requests ->
-                        requests.accessDeniedPage("/access-denied"));
+                        requests.accessDeniedPage("https://amsystemapp.up.railway.app/access-denied"));
 
         return http.build();
     }

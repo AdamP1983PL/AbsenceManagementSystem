@@ -10,21 +10,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("https://amsystemapp.up.railway.app")
 public class AdminController {
 
     private final EmployeeServiceImpl employeeServiceImpl;
     public final RequestServiceImpl requestServiceImpl;
 
-    @GetMapping("admin/employees")
+    @GetMapping("/admin/employees")
     public String listEmployees(Model model) {
         List<EmployeeDto> employeeDtoList = employeeServiceImpl.getAllEmployees();
         model.addAttribute("employeeDtoList", employeeDtoList);
@@ -38,7 +36,7 @@ public class AdminController {
         return "addNewEmployee";
     }
 
-    @PostMapping("admin/saveNewEmployee")
+    @PostMapping("/admin/saveNewEmployee")
     public String saveNewEmployee(@Valid @ModelAttribute("employeeDto") EmployeeDto employeeDto,
                                   BindingResult result,
                                   Model model) {
@@ -48,10 +46,10 @@ public class AdminController {
         }
 
         employeeServiceImpl.save(employeeDto);
-        return "redirect:/admin/employees";
+        return "redirect:https://amsystemapp.up.railway.app/admin/employees";
     }
 
-    @GetMapping("admin/{employeeDtoId}/edit")
+    @GetMapping("/admin/{employeeDtoId}/edit")
     public String editEmployee(@PathVariable("employeeDtoId") Long employeeDtoId, Model model) {
         EmployeeDto employeeDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
         model.addAttribute("employeeDto", employeeDto);
@@ -69,23 +67,23 @@ public class AdminController {
         }
         employeeDto.setId(employeeDtoId);
         employeeServiceImpl.updateEmployee(employeeDto);
-        return "redirect:/admin/employees";
+        return "redirect:https://amsystemapp.up.railway.app/admin/employees";
     }
 
-    @GetMapping("admin/{employeeDtoId}/delete")
+    @GetMapping("/admin/{employeeDtoId}/delete")
     public String deleteEmployee(@PathVariable("employeeDtoId") Long employeeDtoId) {
         employeeServiceImpl.deleteEmployee(employeeDtoId);
-        return "redirect:/admin/employees";
+        return "redirect:https://amsystemapp.up.railway.app/admin/employees";
     }
 
-    @GetMapping("admin/{employeeDtoId}/details")
+    @GetMapping("/admin/{employeeDtoId}/details")
     public String showEmployeeDetails(@PathVariable("employeeDtoId") Long employeeDtoId, Model model) {
         EmployeeDto employeeDetailsDto = employeeServiceImpl.getEmployeeDtoById(employeeDtoId);
         model.addAttribute("employeeDetailsDto", employeeDetailsDto);
         return "employeeDetails";
     }
 
-    @GetMapping("admin/listRequestsAdminMode")
+    @GetMapping("/admin/listRequestsAdminMode")
     public String listRequestsAdminMode(Model model) {
         List<RequestDto> requestDtoList = requestServiceImpl.getAllRequests();
         model.addAttribute("requestDtoList", requestDtoList);
@@ -110,13 +108,13 @@ public class AdminController {
         }
         requestDto.setId(requestDtoId);
         requestServiceImpl.updateRequest(requestDto);
-        return "redirect:/admin/listRequestsAdminMode";
+        return "redirect:https://amsystemapp.up.railway.app/admin/listRequestsAdminMode";
     }
 
     @GetMapping("/admin/listRequestsAdminMode/{requestDtoId}/delete")
     public String deleteRequest(@PathVariable("requestDtoId") Long requestDtoId) {
         requestServiceImpl.deleteRequest(requestDtoId);
-        return "redirect:/admin/listRequestsAdminMode";
+        return "redirect:https://amsystemapp.up.railway.app/admin/listRequestsAdminMode";
     }
 
     @ModelAttribute("Status")

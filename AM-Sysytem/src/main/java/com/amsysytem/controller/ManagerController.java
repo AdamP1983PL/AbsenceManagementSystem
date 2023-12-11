@@ -16,12 +16,13 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("https://amsystemapp.up.railway.app")
 public class ManagerController {
 
     private final EmployeeServiceImpl employeeServiceImpl;
     private final RequestServiceImpl requestServiceImpl;
 
-    @GetMapping("manager/managersList")
+    @GetMapping("/manager/managersList")
     public String listEmployeesManagersSpace(Model model) {
         List<EmployeeDto> employeeDtoList = employeeServiceImpl.getAllEmployees();
         model.addAttribute("employeeDtoList", employeeDtoList);
@@ -60,7 +61,7 @@ public class ManagerController {
         }
         requestDto.setId(requestDtoId);
         requestServiceImpl.updateRequestByManager(requestDto);
-        return "redirect:/manager/listRequestsManagerMode";
+        return "redirect:https://amsystemapp.up.railway.app/manager/listRequestsManagerMode";
     }
 
     @GetMapping("/updateStatus")
@@ -68,7 +69,7 @@ public class ManagerController {
         RequestDto requestDto = requestServiceImpl.getRequestDtoById(id);
         requestDto.setStatus(status);
         requestServiceImpl.updateStatus(requestDto);
-        return "redirect:/manager/listRequestsManagerMode";
+        return "redirect:https://amsystemapp.up.railway.app/manager/listRequestsManagerMode";
     }
 }
 

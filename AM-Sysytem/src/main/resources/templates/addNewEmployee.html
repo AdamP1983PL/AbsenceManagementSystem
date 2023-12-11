@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <form action="#" method="post" role="form"
-                  th:action="@{/admin/saveNewEmployee}" th:object="${employeeDto}">
+                  th:action="@{https://amsystemapp.up.railway.app/admin/saveNewEmployee}" th:object="${employeeDto}">
 
                 <div class="form-group mb-3">
                     <label for="lastName" class="form-label">Last Name</label>
@@ -73,12 +73,12 @@
             </form>
             <div class="mb-3">
                 <h5>
-                    <a th:href="@{/admin/employees}">Proceed to Employee List</a>
+                    <a th:href="@{https://amsystemapp.up.railway.app/admin/employees}">Proceed to Employee List</a>
                 </h5>
             </div>
             <div>
                 <h5>
-                    <a th:href="@{/admin}">Back to Admin Space</a>
+                    <a th:href="@{https://amsystemapp.up.railway.app/admin}">Back to Admin Space</a>
                 </h5>
             </div>
         </div>

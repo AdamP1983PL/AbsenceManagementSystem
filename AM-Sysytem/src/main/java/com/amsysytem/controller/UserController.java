@@ -7,16 +7,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("https://amsystemapp.up.railway.app")
 public class UserController {
 
     private final RequestServiceImpl requestServiceImpl;
@@ -31,10 +29,10 @@ public class UserController {
     @GetMapping("/user/{requestDtoId}/delete")
     public String deleteMyRequest(@PathVariable("requestDtoId") Long requestDtoId) {
         requestServiceImpl.deleteRequest(requestDtoId);
-        return "redirect:/user/myRequestsList";
+        return "redirect:https://amsystemapp.up.railway.app/user/myRequestsList";
     }
 
-    @GetMapping("user/myRequestsList")
+    @GetMapping("/user/myRequestsList")
     public String myRequestsList(Model model, Principal principal) {
         List<RequestDto> requestDtoList = requestServiceImpl.findRequestsByUserEmail(principal.getName());
         model.addAttribute("requestDtoList", requestDtoList);
@@ -59,6 +57,6 @@ public class UserController {
         }
 
         requestServiceImpl.save(requestDto, principal.getName());
-        return "redirect:/user/myRequestsList";
+        return "redirect:https://amsystemapp.up.railway.app/user/myRequestsList";
     }
 }

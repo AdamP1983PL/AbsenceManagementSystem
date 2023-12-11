@@ -43,7 +43,7 @@
             <td class="text-center" th:text="*{remainingDays}"></td>
             <td class="text-center">
                 <div th:if="${request.status.name().equals('PENDING')}">
-                    <a th:href="@{/listRequestsManagerMode/{requestDtoId}/edit(requestDtoId=${request.id})}"
+                    <a th:href="@{https://amsystemapp.up.railway.app/listRequestsManagerMode/{requestDtoId}/edit(requestDtoId=${request.id})}"
                        class="btn btn-info btn-sm">Edit</a>
                 </div>
             </td>
@@ -51,15 +51,15 @@
             <td class="text-center">
                 <div th:if="${request.status.name().equals('PENDING')}">
                     <a th:unless="${request.status.name().equals('PENDING')}" class="btn btn-sm btn-primary"
-                       th:href="@{/updateStatus(id=${request.getId()}, status = 'PENDING')}"
+                       th:href="@{https://amsystemapp.up.railway.app/updateStatus(id=${request.getId()}, status = 'PENDING')}"
                        onclick="if (!(confirm('It is final decision!'))) return false">PENDING</a>
 
                     <a th:unless="${request.status.name().equals('ACCEPTED')}" class="btn btn-sm btn-success"
-                       th:href="@{/updateStatus(id=${request.getId()}, status = 'ACCEPTED')}"
+                       th:href="@{https://amsystemapp.up.railway.app/updateStatus(id=${request.getId()}, status = 'ACCEPTED')}"
                        onclick="if (!(confirm('It is final decision!'))) return false">ACCEPTED</a>
 
                     <a th:unless="${request.status.name().equals('REJECTED')}" class="btn btn-sm btn-warning"
-                       th:href="@{/updateStatus(id=${request.getId()}, status = 'REJECTED')}"
+                       th:href="@{https://amsystemapp.up.railway.app/updateStatus(id=${request.getId()}, status = 'REJECTED')}"
                        onclick="if (!(confirm('It is final decision!'))) return false">REJECTED</a>
                 </div>
             </td>
@@ -70,7 +70,7 @@
     </div>
     <div>
         <h5>
-            <a th:href="@{/manager}">Back to Manager Space</a>
+            <a th:href="@{https://amsystemapp.up.railway.app/manager}">Back to Manager Space</a>
         </h5>
     </div>
     <hr>

@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <form action="#" method="post" role="form"
-                  th:action="@{/admin/{employeeDtoId}(employeeDtoId=${employeeDto.id})}"
+                  th:action="@{https://amsystemapp.up.railway.app/admin/{employeeDtoId}(employeeDtoId=${employeeDto.id})}"
                   th:object="${employeeDto}">
 
                 <div class="">
@@ -82,7 +82,7 @@
 
             <div class="mb-3">
                 <h5>
-                    <a th:href="@{/admin/employees}">Back to Employee List</a>
+                    <a th:href="@{https://amsystemapp.up.railway.app/admin/employees}">Back to Employee List</a>
                 </h5>
             </div>
             <div>
