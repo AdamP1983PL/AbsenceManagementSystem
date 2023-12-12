@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="~{/fragments/head-content :: head-content}"></div>
+    <th:block th:replace="~{fragments/head-content :: head-content}"></th:block>
+    <title></title>
 </head>
 <body>
-<nav th:replace="~{/fragments/navigation :: nav}"></nav>
-<div th:replace="~{/fragments/userDetails :: userInfo}"></div>
+<nav th:replace="~{fragments/navigation :: nav}"></nav>
+<div th:replace="~{fragments/userDetails :: userInfo}"></div>
 <div class="container">
     <div class="text-center">
         <div>
