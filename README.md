@@ -40,6 +40,10 @@ Program ułatwiający zarządzanie nieobecnościami pracowników.
 
 ### Uwagi:
 - Przed pierwszym uruchomieniem programu należy skonfigurować bazę danych w application.properties.
+  - spring.datasource.url=jdbc:mysql://localhost:3306/${db.name}
+  - #spring.datasource.url=jdbc:mysql://${db.host}:${db.port}/${db.name} (zakomentuj tą linię)
+  - spring.datasource.username=${db.username}
+  - spring.datasource.password=${db.pass}
 - Po konfiguracji w bazie danych należy utworzyć nową bazę danych korzystając z polecenia:
   - CREATE DATABASE amsystemdb;
   - USE amsystemdb;
